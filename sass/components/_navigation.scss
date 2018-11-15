@@ -1,0 +1,30 @@
+.navigation{
+
+    &__list{
+        list-style-type: none;
+    }
+
+    &__item{
+        display: inline-block;
+    }
+
+    &__link{
+        color: $color-black;
+        text-decoration: none;
+        display: block;
+
+        &:active,
+        &:link{
+            color: $color-black;
+        }
+
+        &:hover{
+            color: $theme-color-gold;
+        }
+
+        &::after{
+            padding: 1em;
+        }
+    }
+
+}

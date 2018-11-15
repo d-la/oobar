@@ -1,0 +1,112 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+
+.heading-secondary {
+  margin: 0.25em 0;
+}
+
+p {
+  font-weight: 200;
+  font-size: 1.2em;
+}
+
+.header {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 1em;
+}
+.header__logo {
+  float: left;
+}
+.header__logo-image {
+  height: 3.5em;
+  width: auto;
+}
+.header__nav {
+  float: right;
+}
+.header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.navigation__list {
+  list-style-type: none;
+}
+.navigation__item {
+  display: inline-block;
+}
+.navigation__link {
+  color: #000;
+  text-decoration: none;
+  display: block;
+}
+.navigation__link:active, .navigation__link:link {
+  color: #000;
+}
+.navigation__link:hover {
+  color: #CF9F4A;
+}
+.navigation__link::after {
+  padding: 1em;
+}
+
+.flex {
+  display: flex;
+}
+.flex--row {
+  flex-flow: row;
+}
+.flex--wrap {
+  flex-wrap: wrap;
+}
+
+main {
+  display: block;
+  max-width: 101em;
+  margin: 0 auto;
+}
+
+.section-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.section-banner__img {
+  display: block;
+  width: 100%;
+}
+
+.about-us {
+  margin: 1.5em 2em 0;
+}
+.about-us__desc {
+  flex: 0 49%;
+}
+
+@media (max-width: 28.125em) {
+  .about-us__desc {
+    flex: 0 100%;
+    margin: 1em 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,25 @@
+.header{
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 2em;
+
+    &__logo{
+        float: left;
+    
+        &-image{
+            height: 3.5em;
+            width: auto;
+        }
+    }
+
+    &__nav{
+        float: right;
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
