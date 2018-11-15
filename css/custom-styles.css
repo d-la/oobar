@@ -14,7 +14,6 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Oswald", sans-serif;
 }
 
 .heading-secondary {
@@ -41,6 +40,18 @@ p {
 }
 .footer--bg-white {
   background-color: #FFF;
+}
+
+#main-content::before {
+  background-image: none !important;
+}
+
+.content-bg:nth-of-type(2) {
+  padding: 3em 0;
+}
+
+#firstName {
+  display: none;
 }
 
 /*# sourceMappingURL=custom-styles.css.map */

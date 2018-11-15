@@ -1,0 +1,14 @@
+#main-content{
+    &::before{
+        background-image: none !important;
+    }
+}
+
+.content-bg:nth-of-type(2){
+    padding: 3em 0;
+}
+
+// Honeypot form input
+#firstName{
+    display: none;
+}
