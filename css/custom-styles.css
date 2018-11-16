@@ -54,4 +54,10 @@ p {
   display: none;
 }
 
+.input-error {
+  display: none;
+  font-size: 0.85em;
+  color: red;
+}
+
 /*# sourceMappingURL=custom-styles.css.map */
