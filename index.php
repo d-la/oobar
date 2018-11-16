@@ -326,16 +326,22 @@
                     <!-- end col-6 -->
                     <!-- begin col-6 -->
                     <div class="col-md-6 form-col" data-animation="true" data-animation-type="fadeInRight">
-                        <form class="form-horizontal">
+                        <form id="contact-submission" action="controllers/contact-submission.php" method="POST" class="form-horizontal">
                             <div id="firstName" class="form-group row m-b-15">
+                                <div class="col-md-9">
+                                    <input type="text" name="name" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group row m-b-15">
+                                <label class="col-form-label col-md-3 text-md-right">First Name <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
                                     <input type="text" name="firstName" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
-                                <label class="col-form-label col-md-3 text-md-right">Name <span class="text-theme">*</span></label>
+                                <label class="col-form-label col-md-3 text-md-right">Last Name <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="text" name="name" class="form-control" />
+                                    <input type="text" name="lastName" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -347,7 +353,8 @@
                             <div class="form-group row m-b-15">
                                 <label class="col-form-label col-md-3 text-md-right">Phone Number <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="text" name="phoneNumber" class="form-control" />
+                                    <span class="input-error" id="phone-number-error">Wrong format! Phone number must match 000-000-0000 format</span>
+                                    <input type="text" name="phoneNumber" class="form-control" size="12" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -407,6 +414,61 @@
     <script src="/assets/plugins/paroller/jquery.paroller.min.js"></script>
     <script src="/assets/js/one-page-parallax/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
+
+    <script>
+        $('form#contact-submission').submit( (e) => {
+            e.preventDefault();
+
+            handleContactFormSubmission();
+        });
+        
+        // TODO: Finish ajax submission and test form
+        let handleContactFormSubmission = function(){
+
+            let contactData = {
+                firstName: $('input[name="firstName"]').val(),
+                lastName: $('input[name="lastName"').val(),
+                email: $('input[type="email"]').val(),
+                phoneNumber: $('input[name="phoneNumber"]').val(),
+                message: $('textarea[name="message"]').val()
+            };
+
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: contactData
+            }).done((response) => {
+                let parsedResponse = JSON.parse(response);
+                let submitButton = $('button[type="submit"]');
+
+                if (parsedResponse.response == true){
+                    $(submiButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!'));
+                } else {
+                    $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
+                }
+
+            }).error((response) => {
+
+            });
+        };
+
+        // Handle formatting the phone number correctly 
+        $('input[name="phoneNumber"]').keyup(function() {
+            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "$1-$2-$3"));
+        });
+
+        // Check to make sure the phone numbers length isnt greater than 12. if it is show the error message 
+        // before the user submits the form
+        $('input[name="phoneNumber"]').on('propertychange change keyup input paste', () => {
+            let phoneNumber = $('input[name="phoneNumber"]').val();
+
+            if (phoneNumber.length > 12){
+                $('span#phone-number-error').fadeIn();
+            } else {
+                $('span#phone-number-error').fadeOut();
+            }
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
