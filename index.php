@@ -65,9 +65,9 @@
                                 <a class="dropdown-item" href="extra_element.html">Extra Element</a>
                             </div>
                         </li> -->
-                        <li class="nav-item"><a class="nav-link" href="#about" data-click="scroll-to-target">ABOUT</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#events" data-click="scroll-to-target">EVENTS</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#about" data-click="scroll-to-target">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#events" data-click="scroll-to-target">EVENTS</a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#contact" data-click="scroll-to-target">CONTACT</a></li>
                     </ul>
                 </div>
                 <!-- end navbar-collapse -->
@@ -167,7 +167,7 @@
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Upcoming Events</h2>
                 <p class="content-desc">
-                    <a href="">View Calendar</a>
+                    <a href="" class="color-black">View Calendar</a>
                 </p>
                 <!-- begin row -->
                 <div class="row row-space-10">
@@ -391,9 +391,9 @@
                     &copy; Copyright 2017 Oobar
                 </p>
                 <p class="social-list">
-                    <a href="https://www.facebook.com/Oobarlounge/"><i class="fab fa-facebook-f fa-fw"></i></a>
-                    <a href="https://www.instagram.com/oobarlounge/?hl=en"><i class="fab fa-instagram fa-fw"></i></a>
-                    <a href="https://twitter.com/oobarlounge"><i class="fab fa-twitter fa-fw"></i></a>
+                    <a href="https://www.facebook.com/Oobarlounge/" class="theme-color theme-color--hover-blk"><i class="fab fa-facebook-f fa-fw"></i></a>
+                    <a href="https://www.instagram.com/oobarlounge/?hl=en" class="theme-color theme-color--hover-blk"><i class="fab fa-instagram fa-fw"></i></a>
+                    <a href="https://twitter.com/oobarlounge" class="theme-color theme-color--hover-blk"><i class="fab fa-twitter fa-fw"></i></a>
                 </p>
             </div>
         </div>
@@ -424,6 +424,7 @@
         
         // TODO: Finish ajax submission and test form
         let handleContactFormSubmission = function(){
+            let submitButton = $('button[type="submit"]');
 
             let contactData = {
                 firstName: $('input[name="firstName"]').val(),
@@ -434,22 +435,44 @@
             };
 
             $.ajax({
-                url: '',
+                url: '/controllers/contact-submission.php',
                 type: 'POST',
                 data: contactData
-            }).done((response) => {
+            }).done( response => {
                 let parsedResponse = JSON.parse(response);
-                let submitButton = $('button[type="submit"]');
+                console.log(parsedResponse);
 
                 if (parsedResponse.response == true){
-                    $(submiButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!'));
+                    $(submitButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!');
                 } else {
                     $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
                 }
 
-            }).error((response) => {
+                clearFormValues();
+                // Should this event happen? Does UX suffer? 
+                // setTimeout(setSubmitButtonToDefault, 3000);
 
+            }).fail( (response) => {
+                $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
             });
+        };
+
+        let clearFormValues = () => {
+            let contactForm = $('form#contact-submission');
+            
+            $('form#contact-submission input, textarea').each(function(index){
+                $(this).val('');
+            });
+        };
+
+        let setSubmitButtonToDefault = () => {
+            let submitButton = $('button[type="submit"');
+
+            if ($(submitButton).hasClass('btn-danger')){
+                $(submitButton).removeClass('btn-danger').addClass('btn-theme').text('Send Message');
+            } else if ($(submitButton).hasClass('btn-green')){
+                $(submitButton).removeClass('btn-green').addClass('btn-theme').text('Send Message');
+            }
         };
 
         // Handle formatting the phone number correctly 

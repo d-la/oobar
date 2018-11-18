@@ -1,0 +1,22 @@
+.theme-color{
+    // color: #CF9F4A !important;
+    color: $theme-color-gold !important;
+
+    &--hover-blk{
+
+        &:hover{
+            color: $color-black !important;
+        }
+    }
+}
+
+.color-black{
+    color: $color-black !important;
+}
+
+.hover-theme-color{
+
+    &:hover{
+        color: $theme-color-gold !important;
+    }
+}

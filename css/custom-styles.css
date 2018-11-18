@@ -1,3 +1,18 @@
+.theme-color {
+  color: #CF9F4A !important;
+}
+.theme-color--hover-blk:hover {
+  color: #000 !important;
+}
+
+.color-black {
+  color: #000 !important;
+}
+
+.hover-theme-color:hover {
+  color: #CF9F4A !important;
+}
+
 *,
 *::after,
 *::before {
