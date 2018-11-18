@@ -20,3 +20,8 @@
         color: $theme-color-gold !important;
     }
 }
+
+.active{
+    // Override default theme styling
+    color: $theme-color-gold !important;
+}

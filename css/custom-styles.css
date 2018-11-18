@@ -13,6 +13,10 @@
   color: #CF9F4A !important;
 }
 
+.active {
+  color: #CF9F4A !important;
+}
+
 *,
 *::after,
 *::before {
