@@ -43,7 +43,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="index.html" class="navbar-brand">
+                    <a href="index.php" class="navbar-brand">
                         <!-- <span class="brand-logo"></span> -->
                         <span class="brand-text">
                             <!-- <span class="text-theme">Color</span> Admin -->
@@ -167,7 +167,7 @@
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Upcoming Events</h2>
                 <p class="content-desc">
-                    <a href="" class="color-black">View Calendar</a>
+                    <a href="calendar.php" class="color-black">View Calendar</a>
                 </p>
                 <!-- begin row -->
                 <div class="row row-space-10">
