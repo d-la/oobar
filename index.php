@@ -11,6 +11,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
 
+    <link rel="shortcut icon" type="image/png" href="img/the_one_favicon1.png"/>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="/assets/plugins/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
