@@ -1,11 +1,13 @@
-.flex{
-    display: flex;
-    
-    &--row{
-        flex-flow: row;
-    }
+@supports (display: flex){
+    .flex{
+        display: flex;
 
-    &--wrap{
-        flex-wrap: wrap;
+        &--align-items-center{
+            align-items: center;
+        }
+
+        &--justify-content-center{
+            justify-content: center;
+        }
     }
 }

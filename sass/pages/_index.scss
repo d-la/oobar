@@ -1,8 +1,32 @@
 #main-content{
+    background-size: cover;
     &::before{
         background-image: none !important;
     }
 }
+
+#home{
+    height: 635px !important;
+}
+
+#milestone{
+    height: 20em;
+}
+
+// #events-carousel{
+//     max-width: 960px;
+// }
+
+// .carousel{
+//     width: 960px;
+//     margin: 50px auto;
+//     position: relative;
+
+//     &::before{
+//         content: '';
+//         display: table;
+//     }
+// }
 
 .content-bg:nth-of-type(2){
     padding: 3em 0;
@@ -17,4 +41,10 @@
     display: none;
     font-size: .85em;
     color: red;
+}
+
+#events-carousel{
+    max-width: 90em;
+    display: block;
+    margin: 0 auto;
 }

@@ -1,0 +1,33 @@
+@supports (display: grid){
+    .grid{
+        display: grid;
+        margin: 1em 0;
+        padding: 0;
+
+        &--gap-1{
+            grid-gap: 1em;
+        }
+
+        &--justify-items-center{
+            justify-items: center;
+        }
+
+        &--align-items-center{
+            align-items: center;
+        }
+
+        &--events{
+            // grid-template-columns: repeat(4, minmax(15em, 15em));
+            grid-template-columns: repeat(4, minmax(15em, auto));
+            grid-auto-rows: minmax(15.75em, auto);
+        }
+
+        &__item{
+            position: relative;
+            height: 100%;
+            width: 100%;
+
+            list-style-type: none;
+        }
+    }
+}

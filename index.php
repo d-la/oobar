@@ -1,3 +1,7 @@
+<?php 
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+// $mysqli = initializeMysqlConnection();
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -24,6 +28,9 @@
 
     <!-- Custom CSS -->
     <link href="/css/custom-styles.min.css" id="custom-styles" rel="stylesheet" />
+
+    <!-- PureJSCarousel -->
+    <link href="/include/css/purejscarousel.css" id="pure-js-carousel" rel="stylesheet" />
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/pace/pace.min.js"></script>
@@ -121,42 +128,6 @@
             <!-- end content-bg -->
             <!-- begin container -->
             <div class="container">
-                <!-- begin row -->
-                <div class="row">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="1292">1,292</div>
-                            <div class="title">Themes & Template</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="9039">9,039</div>
-                            <div class="title">Registered Members</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="89291">89,291</div>
-                            <div class="title">Items Sold</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 milestone-col">
-                        <div class="milestone">
-                            <div class="number" data-animation="true" data-animation-type="number" data-final-number="129">129</div>
-                            <div class="title">Theme Authors</div>
-                        </div>
-                    </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
             </div>
             <!-- end container -->
         </div>
@@ -168,134 +139,156 @@
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Upcoming Events</h2>
                 <p class="content-desc">
-                    <a href="calendar.php" class="color-black">View Calendar</a>
+                    <!-- <a href="calendar.php" class="color-black">View Calendar</a> -->
+                    No upcoming events! Contact us if you'd like to book an event.
                 </p>
                 <!-- begin row -->
                 <div class="row row-space-10">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-1.jpg" alt="Work 1" /></a>
+                    <div id="events-carousel" class="carousel">
+                        <div class="carousel__container">
+                            <div class="carousel__left-arrow carousel__left-arrow--color-black">
+                                <i class="fa fa-angle-left"></i>
                             </div>
-                            <div class="desc">
-                                <span class="desc-title">Aliquam molestie</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
+                            <div class="carousel__content">
+                                <?php 
+                                // $sqlQuery = 'CALL spSelectUpcomingEvents();';
+                                // $rs = $mysqli->query($sqlQuery);
+
+                                // if ($rs->num_rows > 0){
+                                //     while ($row = $rs->fetch_assoc()){
+                                if (true){ ?>
+                                    <div class="carousel__slide fade-carousel">
+                                        <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 9th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 9th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 9th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 9th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="carousel__slide fade-carousel">
+                                        <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 10th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 10th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 10th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                <div class="card-custom">
+                                                    <div class="card-custom__banner">
+                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                    </div>
+                                                    <h2 class="card-custom__title">Event Title Here</h2>
+                                                    <p class="card-custom__date">Monday, December 10th</p>
+                                                    <p class="card-custom__time">12:00pm - 5pm</p>
+                                                    <div class="btn-container">
+                                                        <a href="/event-detail.php" class="button">More Details</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <?php
+                                }
+                            // } else {
+                                ?>
+                                <!-- <p class="content-desc text-center">
+                                    No upcoming events! Contact us if you'd like to book an event.
+                                </p> -->
+                                <?php 
+                            // }
+                            ?>
                         </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-2.jpg" alt="Work 2" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Quisque at pulvinar lacus</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
+                        <div class="carousel__right-arrow carousel__right-arrow--color-black">
+                                <i class="fa fa-angle-right"></i>
                         </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-3.jpg" alt="Work 3" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Vestibulum et erat ornare</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
                         </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-4.jpg" alt="Work 4" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Sed vitae mollis magna</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
+                        <div class="carousel__dots margin-top-small">
+                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
+                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
                         </div>
-                        <!-- end work -->
                     </div>
-                    <!-- end col-3 -->
-                </div>
-                <!-- end row -->
-                <!-- begin row -->
-                <div class="row row-space-10">
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-5.jpg" alt="Work 5" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Suspendisse at mattis odio</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-6.jpg" alt="Work 6" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Aliquam vitae commodo diam</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-7.jpg" alt="Work 7" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Phasellus eu vehicula lorem</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
-                    <!-- begin col-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <!-- begin work -->
-                        <div class="work">
-                            <div class="image">
-                                <a href="#"><img src="../assets/img/work/work-img-8.jpg" alt="Work 8" /></a>
-                            </div>
-                            <div class="desc">
-                                <span class="desc-title">Morbi bibendum pellentesque</span>
-                                <span class="desc-text">Lorem ipsum dolor sit amet</span>
-                            </div>
-                        </div>
-                        <!-- end work -->
-                    </div>
-                    <!-- end col-3 -->
                 </div>
                 <!-- end row -->
             </div>
@@ -416,83 +409,99 @@
     <script src="/assets/js/one-page-parallax/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
+    <script src="/include/js/purejscarousel.js"></script>
+
     <script>
-        $('form#contact-submission').submit( (e) => {
-            e.preventDefault();
+        $(document).ready(function(){
+            $('form#contact-submission').submit( (e) => {
+                e.preventDefault();
 
-            handleContactFormSubmission();
-        });
-        
-        // TODO: Finish ajax submission and test form
-        let handleContactFormSubmission = function(){
-            let submitButton = $('button[type="submit"]');
+                handleContactFormSubmission();
+            });
+            
+            // TODO: Finish ajax submission and test form
+            let handleContactFormSubmission = function(){
+                let submitButton = $('button[type="submit"]');
 
-            let contactData = {
-                firstName: $('input[name="firstName"]').val(),
-                lastName: $('input[name="lastName"').val(),
-                email: $('input[type="email"]').val(),
-                phoneNumber: $('input[name="phoneNumber"]').val(),
-                message: $('textarea[name="message"]').val()
+                let contactData = {
+                    firstName: $('input[name="firstName"]').val(),
+                    lastName: $('input[name="lastName"').val(),
+                    email: $('input[type="email"]').val(),
+                    phoneNumber: $('input[name="phoneNumber"]').val(),
+                    message: $('textarea[name="message"]').val()
+                };
+
+                $.ajax({
+                    url: '/controllers/contact-submission.php',
+                    type: 'POST',
+                    data: contactData
+                }).done( response => {
+                    let parsedResponse = JSON.parse(response);
+                    console.log(parsedResponse);
+
+                    if (parsedResponse.response == true){
+                        $(submitButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!');
+                    } else {
+                        $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
+                    }
+
+                    clearFormValues();
+                    // Should this event happen? Does UX suffer? 
+                    // setTimeout(setSubmitButtonToDefault, 3000);
+
+                }).fail( (response) => {
+                    $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
+                });
             };
 
-            $.ajax({
-                url: '/controllers/contact-submission.php',
-                type: 'POST',
-                data: contactData
-            }).done( response => {
-                let parsedResponse = JSON.parse(response);
-                console.log(parsedResponse);
+            let clearFormValues = () => {
+                let contactForm = $('form#contact-submission');
+                
+                $('form#contact-submission input, textarea').each(function(index){
+                    $(this).val('');
+                });
+            };
 
-                if (parsedResponse.response == true){
-                    $(submitButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!');
-                } else {
-                    $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
+            let setSubmitButtonToDefault = () => {
+                let submitButton = $('button[type="submit"');
+
+                if ($(submitButton).hasClass('btn-danger')){
+                    $(submitButton).removeClass('btn-danger').addClass('btn-theme').text('Send Message');
+                } else if ($(submitButton).hasClass('btn-green')){
+                    $(submitButton).removeClass('btn-green').addClass('btn-theme').text('Send Message');
                 }
+            };
 
-                clearFormValues();
-                // Should this event happen? Does UX suffer? 
-                // setTimeout(setSubmitButtonToDefault, 3000);
-
-            }).fail( (response) => {
-                $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
+            // Handle formatting the phone number correctly 
+            $('input[name="phoneNumber"]').keyup(function() {
+                $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "$1-$2-$3"));
             });
-        };
 
-        let clearFormValues = () => {
-            let contactForm = $('form#contact-submission');
-            
-            $('form#contact-submission input, textarea').each(function(index){
-                $(this).val('');
+            // Check to make sure the phone numbers length isnt greater than 12. if it is show the error message 
+            // before the user submits the form
+            $('input[name="phoneNumber"]').on('propertychange change keyup input paste', () => {
+                let phoneNumber = $('input[name="phoneNumber"]').val();
+
+                if (phoneNumber.length > 12){
+                    $('span#phone-number-error').fadeIn();
+                } else {
+                    $('span#phone-number-error').fadeOut();
+                }
             });
-        };
-
-        let setSubmitButtonToDefault = () => {
-            let submitButton = $('button[type="submit"');
-
-            if ($(submitButton).hasClass('btn-danger')){
-                $(submitButton).removeClass('btn-danger').addClass('btn-theme').text('Send Message');
-            } else if ($(submitButton).hasClass('btn-green')){
-                $(submitButton).removeClass('btn-green').addClass('btn-theme').text('Send Message');
-            }
-        };
-
-        // Handle formatting the phone number correctly 
-        $('input[name="phoneNumber"]').keyup(function() {
-            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "$1-$2-$3"));
-        });
-
-        // Check to make sure the phone numbers length isnt greater than 12. if it is show the error message 
-        // before the user submits the form
-        $('input[name="phoneNumber"]').on('propertychange change keyup input paste', () => {
-            let phoneNumber = $('input[name="phoneNumber"]').val();
-
-            if (phoneNumber.length > 12){
-                $('span#phone-number-error').fadeIn();
-            } else {
-                $('span#phone-number-error').fadeOut();
-            }
         });
     </script>
+    <script src="/include/js/carousel.min.js"></script>
+        <script>
+            let eventsCarousel = new Carousel({
+                carousel: '#events-carousel',
+                slides: '.carousel__slide',
+                nextSlideBtn: '.fa-angle-right',
+                prevSlideBtn: '.fa-angle-left',
+                carouselDots: '.carousel__dot',
+                slideIndex: 1
+            });
+            eventsCarousel.assignEventListenerToDots();
+        </script>
 
     <script>
         $(document).ready(function () {
