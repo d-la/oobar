@@ -1,6 +1,6 @@
 <?php 
-// require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
-// $mysqli = initializeMysqlConnection();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+$mysqli = initializeMysqlConnection();
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -28,9 +28,6 @@
 
     <!-- Custom CSS -->
     <link href="/css/custom-styles.min.css" id="custom-styles" rel="stylesheet" />
-
-    <!-- PureJSCarousel -->
-    <link href="/include/css/purejscarousel.css" id="pure-js-carousel" rel="stylesheet" />
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/pace/pace.min.js"></script>
@@ -152,132 +149,52 @@
                             <div class="carousel__content">
                                 <?php 
                                 // $sqlQuery = 'CALL spSelectUpcomingEvents();';
-                                // $rs = $mysqli->query($sqlQuery);
+                                $sqlQuery = 'SELECT * FROM events';
+                                $rs = $mysqli->query($sqlQuery);
+                                $count = 0;
+                                if ($rs->num_rows > 0){
+                                    $rowCount = $rs->num_rows;
 
-                                // if ($rs->num_rows > 0){
-                                //     while ($row = $rs->fetch_assoc()){
-                                if (true){ ?>
-                                    <div class="carousel__slide fade-carousel">
-                                        <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 9th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 9th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 9th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 9th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="carousel__slide fade-carousel">
-                                        <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 10th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 10th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 10th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="grid__item flex flex--align-items-center flex--justify-content-center">
-                                                <div class="card-custom">
-                                                    <div class="card-custom__banner">
-                                                        <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
-                                                    </div>
-                                                    <h2 class="card-custom__title">Event Title Here</h2>
-                                                    <p class="card-custom__date">Monday, December 10th</p>
-                                                    <p class="card-custom__time">12:00pm - 5pm</p>
-                                                    <div class="btn-container">
-                                                        <a href="/event-detail.php" class="button">More Details</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <?php
-                                }
-                            // } else {
-                                ?>
-                                <!-- <p class="content-desc text-center">
+
+                                    while ($row = $rs->fetch_assoc()){ 
+                                        if ( ($count == 0) || (($count % 4) == 0) ){
+                                            echo '<div class="carousel__slide fade-carousel">';
+                                            echo '<ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">';
+                                        }
+                                        $startTime = date('h:i a', strtotime($row['start_time']));
+                                        $endTime = date('h:i a', strtotime($row['end_time']));
+                                        ?>
+                                            <!-- <div class="carousel__slide fade-carousel"> -->
+                                                <!-- <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel"> -->
+                                                    <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                        <div class="card-custom">
+                                                            <div class="card-custom__banner">
+                                                                <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+                                                            </div>
+                                                            <h2 class="card-custom__title"><?= $row['event_name'] ?></h2>
+                                                            <p class="card-custom__date"><?= $row['event_date'] ?></p>
+                                                            <p class="card-custom__time"><?php echo $startTime . ' - ' . $endTime ?></p>
+                                                            <div class="btn-container">
+                                                                <a href="/event-details.php?eventid=<?= $row['id'] ?>" class="button">More Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                <!-- </ul>
+                                            </div> -->
+                                            <?php
+
+                                        if ( ($count == 0) || (($count % 4) == 0) ){
+                                            echo '</ul>';
+                                            echo '</div>';
+                                        }
+                                        $count++;
+                                    }
+                                } else { ?>
+                                <p class="content-desc text-center">
                                     No upcoming events! Contact us if you'd like to book an event.
-                                </p> -->
+                                </p>
                                 <?php 
-                            // }
+                            }
                             ?>
                         </div>
                         <div class="carousel__right-arrow carousel__right-arrow--color-black">
@@ -285,8 +202,13 @@
                         </div>
                         </div>
                         <div class="carousel__dots margin-top-small">
-                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
-                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
+                            <?php 
+                            for ($i = 0; $i < count($count); $i++){
+                                echo '<span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>';
+                            }
+                            ?>
+                            <!-- <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
+                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span> -->
                         </div>
                     </div>
                 </div>
@@ -408,8 +330,6 @@
     <script src="/assets/plugins/paroller/jquery.paroller.min.js"></script>
     <script src="/assets/js/one-page-parallax/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
-
-    <script src="/include/js/purejscarousel.js"></script>
 
     <script>
         $(document).ready(function(){
