@@ -1,5 +1,6 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 $mysqli = initializeMysqlConnection();
 
 $eventId = filter_var($_POST['eventId'], FILTER_VALIDATE_INT);

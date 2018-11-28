@@ -1,5 +1,6 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 $mysqli = initializeMysqlConnection();
 
 $eventTitle = $_POST['eventName'];
