@@ -122,10 +122,11 @@ class Contact{
      * @return boolean true if execution is successful
      */
     public function insertNewContactSubmission(){
-        $sqlQuery = "CALL spInsertNewContactSubmission('" . $this->mysqli->real_escape_string($this->firstName) . "', '" . $this->mysqli->real_escape_string($this->lastName) . "', '" . $this->email . "', '" . $this->phoneNumber . "', '" . $this->mysqli->real_escape_string($this->message) . "');";
+        // $sqlQuery = "CALL spInsertNewContactSubmission('" . $this->mysqli->real_escape_string($this->firstName) . "', '" . $this->mysqli->real_escape_string($this->lastName) . "', '" . $this->email . "', '" . $this->phoneNumber . "', '" . $this->mysqli->real_escape_string($this->message) . "');";
+        $sqlQuery = "INSERT INTO contact_submissions (first_name, last_name, email, phone_number, message, contact_date) VALUES ('" . $this->mysqli->real_escape_string($this->firstName) . "', '" . $this->mysqli->real_escape_string($this->lastName) . "', '" . $this->email . "', '" . $this->phoneNumber . "', '" . $this->mysqli->real_escape_string($this->message) . "', NOW());";
         
         $result = $this->mysqli->query($sqlQuery);
-        
+
         return $result;
     }
 
