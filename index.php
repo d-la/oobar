@@ -135,28 +135,25 @@ $mysqli = initializeMysqlConnection();
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">Upcoming Events</h2>
-                <p class="content-desc">
-                    <!-- <a href="calendar.php" class="color-black">View Calendar</a> -->
-                    No upcoming events! Contact us if you'd like to book an event.
-                </p>
                 <!-- begin row -->
                 <div class="row row-space-10">
                     <div id="events-carousel" class="carousel">
-                        <div class="carousel__container">
-                            <div class="carousel__left-arrow carousel__left-arrow--color-black">
-                                <i class="fa fa-angle-left"></i>
-                            </div>
-                            <div class="carousel__content">
-                                <?php 
-                                // $sqlQuery = 'CALL spSelectUpcomingEvents();';
-                                $sqlQuery = 'SELECT * FROM events';
-                                $rs = $mysqli->query($sqlQuery);
-                                $count = 0;
-                                $dotsCount = 0;
-                                if ($rs->num_rows > 0){
-                                    $rowCount = $rs->num_rows;
+                        <?php 
+                            // $sqlQuery = 'CALL spSelectUpcomingEvents();';
+                            $sqlQuery = 'SELECT * FROM events';
+                            $rs = $mysqli->query($sqlQuery);
+                            $count = 0;
+                            $dotsCount = 0;
 
-
+                            if ($rs->num_rows > 0){
+                                $rowCount = $rs->num_rows;
+                            ?>
+                            <div class="carousel__container">
+                                <div class="carousel__left-arrow carousel__left-arrow--color-black">
+                                    <i class="fa fa-angle-left"></i>
+                                </div>
+                                <div class="carousel__content">
+                                <?php
                                     while ($row = $rs->fetch_assoc()){ 
                                         if ( ($count == 0) || (($count % 4) == 0) ){
                                             echo '<div class="carousel__slide fade-carousel">';
@@ -191,27 +188,29 @@ $mysqli = initializeMysqlConnection();
                                         }
                                         $count++;
                                     }
-                                } else { ?>
+                                ?>
+                                </div>
+                                <div class="carousel__right-arrow carousel__right-arrow--color-black">
+                                        <i class="fa fa-angle-right"></i>
+                                </div>
+                                </div>
+                                <div class="carousel__dots margin-top-small">
+                                    <?php 
+                                    for ($i = 0; $i < $dotsCount; $i++){
+                                        echo '<span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>';
+                                    }
+                                    ?>
+                                    <!-- <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
+                                    <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span> -->
+                                </div>
+                            <?php
+                            } else { ?>
                                 <p class="content-desc text-center">
                                     No upcoming events! Contact us if you'd like to book an event.
                                 </p>
                                 <?php 
                             }
                             ?>
-                        </div>
-                        <div class="carousel__right-arrow carousel__right-arrow--color-black">
-                                <i class="fa fa-angle-right"></i>
-                        </div>
-                        </div>
-                        <div class="carousel__dots margin-top-small">
-                            <?php 
-                            for ($i = 0; $i < $dotsCount; $i++){
-                                echo '<span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>';
-                            }
-                            ?>
-                            <!-- <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>
-                            <span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span> -->
-                        </div>
                     </div>
                 </div>
                 <!-- end row -->
