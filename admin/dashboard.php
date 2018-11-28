@@ -1,5 +1,7 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
 $mysqli = initializeMysqlConnection();
 ?>
 <!DOCTYPE html>
@@ -58,7 +60,7 @@ $mysqli = initializeMysqlConnection();
                                         <th>Message</th>
                                     </thead>
                                     <?php 
-                                    $sqlQuery = 'CALL spSelectAllContactSubmissions();';
+                                    $sqlQuery = 'SELECT * FROM contact_submissions;';
                                     $rs = $mysqli->query($sqlQuery);
                                     $count = 0;
                                     if ($rs->num_rows > 0){
@@ -117,7 +119,7 @@ $mysqli = initializeMysqlConnection();
                                     <th>End Time</th>
                                 </thead>
                                 <?php 
-                                $sqlQuery = 'CALL spSelectUpcomingEvents();';
+                                $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date DESC;';
                                 $rs = $mysqli->query($sqlQuery);
 
                                 $count = 0;

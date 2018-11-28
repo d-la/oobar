@@ -1,5 +1,7 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
 $mysqli = initializeMysqlConnection();
 ?>
 <!DOCTYPE html>
@@ -54,7 +56,7 @@ $mysqli = initializeMysqlConnection();
                             if (isset($_GET['id'])){
                                 $eventId = filter_var($_GET['id'], FILTER_VALIDATE_INT);
                             }
-                            $sqlQuery = "CALL spSelectEvent($eventId);";
+                            $sqlQuery = "SELECT * FROM events WHERE id = $eventId;";
                             $rs = $mysqli->query($sqlQuery);
                             $count = 0;
                             if ($rs->num_rows > 0){

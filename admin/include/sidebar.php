@@ -28,7 +28,7 @@ if (!empty($requestedPath[2])){
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
-                        Oobar Admin
+                        Welcome <?= $_SESSION['firstName']; ?>
                     </div>
                 </a>
             </li>
