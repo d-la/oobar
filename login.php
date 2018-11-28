@@ -1,4 +1,4 @@
-<?php // require_once '/include/sessionstart.php'; ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php'; ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -39,10 +39,10 @@
 			<div class="news-feed">
 				<div class="news-image" style="background-image: url(/admin/admin_assets/img/login-bg/login-bg-11.jpg)"></div>
 				<div class="news-caption">
-					<h4 class="caption-title"><b>Color</b> Admin App</h4>
+					<!-- <h4 class="caption-title"><b>Color</b> Admin App</h4>
 					<p>
 						Download the Color Admin app for iPhone®, iPad®, and Android™. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-					</p>
+					</p> -->
 				</div>
 			</div>
 			<!-- end news-feed -->
