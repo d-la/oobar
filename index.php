@@ -152,6 +152,7 @@ $mysqli = initializeMysqlConnection();
                                 $sqlQuery = 'SELECT * FROM events';
                                 $rs = $mysqli->query($sqlQuery);
                                 $count = 0;
+                                $dotsCount = 0;
                                 if ($rs->num_rows > 0){
                                     $rowCount = $rs->num_rows;
 
@@ -186,6 +187,7 @@ $mysqli = initializeMysqlConnection();
                                         if ( ($count == 0) || (($count % 4) == 0) ){
                                             echo '</ul>';
                                             echo '</div>';
+                                            $dotsCount++;
                                         }
                                         $count++;
                                     }
@@ -203,7 +205,7 @@ $mysqli = initializeMysqlConnection();
                         </div>
                         <div class="carousel__dots margin-top-small">
                             <?php 
-                            for ($i = 0; $i < count($count); $i++){
+                            for ($i = 0; $i < $dotsCount; $i++){
                                 echo '<span class="carousel__dot carousel__dot--small carousel__dot--color-black"></span>';
                             }
                             ?>
