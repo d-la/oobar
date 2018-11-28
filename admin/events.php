@@ -142,6 +142,26 @@ $mysqli = initializeMysqlConnection();
 										</div>
 									</div>
                                 </div>
+
+                                <div class="form-group row m-b-15">
+									<label class="col-form-label col-md-3">Banner Image</label>
+									<div class="col-md-9">
+										<div class="">
+											<input name="bannerImage" type="file" class="form-control" accept="image/png, image/jpeg, image/jpg" />
+										</div>
+									</div>
+                                </div>
+
+                                <div class="form-group row m-b-15">
+									<label class="col-form-label col-md-3">Registration Link</label>
+									<div class="col-md-9">
+										<div class="">
+											<input name="registrationLink" type="text" class="form-control" />
+										</div>
+									</div>
+                                </div>
+
+
                                 <div class="form-group row m-b-15">
 									<button type="submit" class="btn btn-default">Submit</button>
 								</div>
