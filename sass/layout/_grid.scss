@@ -30,4 +30,20 @@
             list-style-type: none;
         }
     }
+
+    @media (max-width: 1060px){
+        .grid{
+            &--events{
+                grid-template-columns: repeat(2, minmax(15em, auto));
+            }
+        }
+    }
+
+    @media (max-width: 660px){
+        .grid{
+            &--events{
+                grid-template-columns: repeat(1, minmax(15em, auto));
+            }
+        }
+    }
 }
