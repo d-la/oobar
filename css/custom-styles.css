@@ -95,6 +95,9 @@ p {
   border: 1px solid #000;
   border-radius: 4px;
 }
+.card-custom:hover {
+  border-color: #CF9F4A;
+}
 .card-custom__banner {
   height: 7em;
   position: relative;
@@ -305,6 +308,22 @@ p {
   max-width: 90em;
   display: block;
   margin: 0 auto;
+}
+
+.event-detail {
+  margin: 10em 2em 3em;
+}
+.event-detail__container {
+  position: relative;
+  display: block;
+  max-width: 60em;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+.event-detail__container:hover {
+  border-color: #CF9F4A;
 }
 
 /*# sourceMappingURL=custom-styles.css.map */

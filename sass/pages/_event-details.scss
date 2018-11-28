@@ -1,0 +1,17 @@
+.event-detail{
+    margin: 10em 2em 3em;
+
+    &__container{
+        position: relative;
+        display: block;
+        max-width: 60em;
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid #000;
+        border-radius: 4px;
+
+        &:hover{
+            border-color: $theme-color-gold;
+        }
+    }
+}
