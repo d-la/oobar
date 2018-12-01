@@ -1,4 +1,7 @@
-<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php'; ?>
+<?php 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
@@ -60,11 +63,25 @@
 				<!-- end login-header -->
 				<!-- begin login-content -->
 				<div class="login-content">
+					<?php 
+					// Determine if the user entered an incorrect email/password combo
+					if (isset($_SESSION['alert'])){
+
+						if ($_SESSION['alert'] == 'error'){
+							$alertBanner = new AlertBanner($_SESSION['alert'], 'Invalid username and password.');
+							echo $alertBanner->getAlertBannerHtml();
+						}
+						
+						unset($_SESSION['alert']);
+					}
+					?>
 					<form action="/controllers/loginprocess.php" method="POST" class="margin-bottom-0">
 						<div class="form-group m-b-15">
+							<label for="email">Email:</label>
 							<input type="email" name="email" class="form-control form-control-lg" placeholder="Email Address" required />
 						</div>
 						<div class="form-group m-b-15">
+							<label for="email">Password:</label>
 							<input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required />
 						</div>
 						<div class="checkbox checkbox-css m-b-30">
