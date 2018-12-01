@@ -4,7 +4,7 @@ class AlertBanner{
 
     private $allowedAlertTypes = array('success', 'warning', 'error');
     
-    private $alertType, $alterMessage, $alertHtml;
+    private $alertType, $alertMessage, $alertHtml;
 
 
     public function __construct($alertType, $alertMessage = null){
