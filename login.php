@@ -68,7 +68,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
 					if (isset($_SESSION['alert'])){
 
 						if ($_SESSION['alert'] == 'error'){
-							$alertBanner = new AlertBanner($_SESSION['alert'], 'Invalid username and password.');
+							$alertBanner = new AlertBanner($_SESSION['alert'], 'Invalid email and password combination.');
 							echo $alertBanner->getAlertBannerHtml();
 						}
 						
