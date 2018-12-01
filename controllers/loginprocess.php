@@ -29,10 +29,12 @@ if ($validateEmail !== false){
         header('Location: /admin/dashboard.php');
         die();
     } else {
+        $_SESSION['alert'] = 'error';
         header('Location: /login.php');
         die();
     }
 } else {
+    $_SESSION['alert'] = 'error';
     header('Location: /login.php');
     die();
 }
