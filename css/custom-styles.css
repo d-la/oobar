@@ -108,15 +108,19 @@ p {
   display: block;
   position: relative;
   padding: 0 0.75em;
+}
+.card-custom__header {
   text-align: center;
   margin: 0.75em 0;
+  padding: 0 0 2em 0;
+  font-size: 1em;
 }
 .card-custom__date {
   display: block;
   position: relative;
   padding: 0 0.75em;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 1em;
   margin: 0;
 }
 .card-custom__time {
@@ -124,7 +128,7 @@ p {
   position: relative;
   padding: 0 0.75em;
   text-align: center;
-  font-size: 0.75em;
+  font-size: 0.9em;
   margin: 0;
 }
 
@@ -217,6 +221,7 @@ p {
   font-size: 2em;
   text-align: center;
   padding: 0 2em;
+  margin: 1em 0 0.5em;
 }
 .event__desc {
   position: relative;
@@ -234,6 +239,15 @@ p {
 @supports (display: flex) {
   .flex {
     display: flex;
+  }
+  .flex--column {
+    flex-flow: column;
+  }
+  .flex--row {
+    flex-flow: row;
+  }
+  .flex--no-wrap {
+    flex-wrap: nowrap;
   }
   .flex--align-items-center {
     align-items: center;

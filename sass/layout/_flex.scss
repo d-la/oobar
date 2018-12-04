@@ -2,6 +2,18 @@
     .flex{
         display: flex;
 
+        &--column{
+            flex-flow: column;
+        }
+
+        &--row{
+            flex-flow: row;
+        }
+
+        &--no-wrap{
+            flex-wrap: nowrap;
+        }
+
         &--align-items-center{
             align-items: center;
         }
