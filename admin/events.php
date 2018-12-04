@@ -4,6 +4,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
 $mysqli = initializeMysqlConnection();
+
+// $now = new DateTime(null, new DateTimeZone('America/New_York'));
+date_default_timezone_set('America/New_York'); 
+$todaysDate = date('m/d/y');
+// var_dump($now);
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -135,7 +140,7 @@ $mysqli = initializeMysqlConnection();
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Event Date</label>
 									<div class="col-md-9">
-										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" value="12/1/2018" required="required" />
+										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" value="<?= $todaysDate; ?>" required="required" />
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
