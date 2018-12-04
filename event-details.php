@@ -84,6 +84,10 @@ $eventId = $_GET['eventid'];
                     $eventDate = date('M d, Y', strtotime($row['event_date']));
                     $eventTime = date('h:i a', strtotime($row['start_time'])) . ' ' . date('h:i a', strtotime($row['end_time']));
                     $bannerPath = $row['banner_path'];
+
+                    if (empty($bannerPath)){
+                        $bannerPath = '/img/banner.jpg';
+                    }
                     $registrationUrl = $row['registration_url'];
                 }
             }
@@ -97,16 +101,16 @@ $eventId = $_GET['eventid'];
                     <div class="event-detail__container">
                         <div class="event">
                             <div class="event__banner">
-                                <img src="/img/banner.jpg" alt="banner image" class="event__image">
+                                <img src="<?= $bannerPath; ?>" alt="banner image" class="event__image">
                             </div>
                             <h1 class="event__title">
                                 <?= $eventName ?>
                             </h1>
-                            <p class="event__desc">
-                                <?= $eventDesc ?>
-                            </p>
                             <p class="event__date-time">
                                 <?php echo $eventDate . ': ' . $eventTime; ?>
+                            </p>
+                            <p class="event__desc">
+                                <?= $eventDesc ?>
                             </p>
                             <?php 
                             if (!empty($registrationUrl)){ ?>
