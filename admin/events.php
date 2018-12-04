@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
 $mysqli = initializeMysqlConnection();
 ?>
 <!DOCTYPE html>
@@ -100,6 +101,17 @@ $mysqli = initializeMysqlConnection();
                 <!-- end col-8 -->
                 <!-- begin col-4 -->
                 <div class="col-lg-4">
+                    <?php 
+                    if (isset($_SESSION['alert'])){
+
+						if ($_SESSION['alert'] == 'file error'){
+							$alertBanner = new AlertBanner('error', 'File already exists!');
+							echo $alertBanner->getAlertBannerHtml();
+						}
+						
+						unset($_SESSION['alert']);
+					}
+                    ?>
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -107,30 +119,30 @@ $mysqli = initializeMysqlConnection();
                             </h4>
                         </div>
                         <div class="panel-body">
-                            <form action="/controllers/add-event.php" method="post" id="add-event">
+                            <form action="/controllers/add-event.php" method="post" id="add-event" enctype="multipart/form-data">
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Event Name</label>
 									<div class="col-md-9">
-										<input type="text" name="eventName" class="form-control m-b-5" placeholder="Enter event name" />
+										<input type="text" name="eventName" class="form-control m-b-5" placeholder="Enter event name" required="required" />
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Enter event Description</label>
 									<div class="col-md-9">
-										<textarea name="eventDesc" class="form-control m-b-5" placeholder="Event description"></textarea>
+										<textarea name="eventDesc" class="form-control m-b-5" placeholder="Event description" required="required"></textarea>
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Event Date</label>
 									<div class="col-md-9">
-										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" value="12/1/2018" />
+										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" value="12/1/2018" required="required" />
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Start Time</label>
 									<div class="col-md-9">
 										<div class="input-group bootstrap-timepicker">
-											<input name="startTime" data-provide="timepicker" type="text" class="form-control" />
+											<input name="startTime" data-provide="timepicker" type="text" class="form-control" required="required" />
 											<span class="input-group-addon"><i class="fa fa-clock"></i></span>
 										</div>
 									</div>
@@ -140,7 +152,7 @@ $mysqli = initializeMysqlConnection();
 									<label class="col-form-label col-md-3">End Time</label>
 									<div class="col-md-9">
 										<div class="input-group bootstrap-timepicker">
-											<input name="endTime" data-provide="timepicker" type="text" class="form-control" />
+											<input name="endTime" data-provide="timepicker" type="text" class="form-control" required="required" />
 											<span class="input-group-addon"><i class="fa fa-clock"></i></span>
 										</div>
 									</div>
