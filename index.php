@@ -140,7 +140,7 @@ $mysqli = initializeMysqlConnection();
                     <div id="events-carousel" class="carousel">
                         <?php 
                             // $sqlQuery = 'CALL spSelectUpcomingEvents();';
-                            $sqlQuery = 'SELECT * FROM events';
+                            $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE();';
                             $rs = $mysqli->query($sqlQuery);
                             $count = 0;
                             $dotsCount = 0;
@@ -159,19 +159,28 @@ $mysqli = initializeMysqlConnection();
                                             echo '<div class="carousel__slide fade-carousel">';
                                             echo '<ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel">';
                                         }
+                                        $bannerPath = $row['banner_path'];
+                                        if (empty($bannerPath)){
+                                            $bannerPath = $_SERVER['DOCUMENT_ROOT'] . '/img/banner.jpg';
+                                        }
                                         $startTime = date('h:i a', strtotime($row['start_time']));
                                         $endTime = date('h:i a', strtotime($row['end_time']));
                                         ?>
                                             <!-- <div class="carousel__slide fade-carousel"> -->
                                                 <!-- <ul class="grid grid--events grid--gap-1 grid--justify-items-center grid--align-items-center fade-carousel"> -->
-                                                    <li class="grid__item flex flex--align-items-center flex--justify-content-center">
+                                                    <li class="grid__item flex flex--column flex--no-wrap flex--align-items-center flex--justify-content-center">
                                                         <div class="card-custom">
                                                             <div class="card-custom__banner">
-                                                                <img src="/img/banner.jpg" width="100%" height="auto" alt="banner image">
+
+                                                                <img src="<?= $bannerPath ?>" width="100%" height="100%" alt="banner image">
                                                             </div>
-                                                            <h2 class="card-custom__title"><?= $row['event_name'] ?></h2>
-                                                            <p class="card-custom__date"><?= $row['event_date'] ?></p>
-                                                            <p class="card-custom__time"><?php echo $startTime . ' - ' . $endTime ?></p>
+                                                            <div class="card-custom__title">
+                                                                <h2 class="card-custom__header"><?= $row['event_name'] ?></h2>
+                                                            </div>
+                                                            <div class="card-custom__info">
+                                                                <p class="card-custom__date"><?= date('M d, Y', strtotime($row['event_date'])); ?></p>
+                                                                <p class="card-custom__time"><?php echo $startTime . ' - ' . $endTime ?></p>
+                                                            </div>
                                                             <div class="btn-container">
                                                                 <a href="/event-details.php?eventid=<?= $row['id'] ?>" class="button">More Details</a>
                                                             </div>
@@ -181,12 +190,12 @@ $mysqli = initializeMysqlConnection();
                                             </div> -->
                                             <?php
 
-                                        if ( ($count == 0) || (($count % 4) == 0) ){
+                                        $count++;
+                                        if (($count == $rowCount) || (($count % 4) == 0)){
                                             echo '</ul>';
                                             echo '</div>';
                                             $dotsCount++;
                                         }
-                                        $count++;
                                     }
                                 ?>
                                 </div>
@@ -246,32 +255,32 @@ $mysqli = initializeMysqlConnection();
                         <form id="contact-submission" action="controllers/contact-submission.php" method="POST" class="form-horizontal">
                             <div id="firstName" class="form-group row m-b-15">
                                 <div class="col-md-9">
-                                    <input type="text" name="name" class="form-control" />
+                                    <input required="required" type="text" name="name" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
                                 <label class="col-form-label col-md-3 text-md-right">First Name <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="text" name="firstName" class="form-control" />
+                                    <input required="required" type="text" name="firstName" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
                                 <label class="col-form-label col-md-3 text-md-right">Last Name <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="text" name="lastName" class="form-control" />
+                                    <input required="required" type="text" name="lastName" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
                                 <label class="col-form-label col-md-3 text-md-right">Email <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
-                                    <input type="email" name="email" class="form-control" />
+                                    <input required="required" type="email" name="email" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
                                 <label class="col-form-label col-md-3 text-md-right">Phone Number <span class="text-theme">*</span></label>
                                 <div class="col-md-9">
                                     <span class="input-error" id="phone-number-error">Wrong format! Phone number must match 000-000-0000 format</span>
-                                    <input type="text" name="phoneNumber" class="form-control" size="12" />
+                                    <input required="required" type="text" id="masked-input-phone" name="phoneNumber" class="form-control" placeholder="000-000-0000" size="12" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -330,6 +339,7 @@ $mysqli = initializeMysqlConnection();
     <script src="/assets/plugins/scrollMonitor/scrollMonitor.js"></script>
     <script src="/assets/plugins/paroller/jquery.paroller.min.js"></script>
     <script src="/assets/js/one-page-parallax/apps.min.js"></script>
+    <script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <script>
