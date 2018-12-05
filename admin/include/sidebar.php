@@ -79,6 +79,18 @@ if (!empty($requestedPath[2])){
                     <span>Events</span>
                 </a>
             </li>
+            <?php 
+            if ($currentPage == 'Gallery'){
+                echo $classActive;
+            } else {
+                echo $notActive;
+            }
+            ?>
+                <a href="gallery.php">
+                    <i class="fa fa-calendar"></i> 
+                    <span>Gallery</span>
+                </a>
+            </li>
             <!-- begin sidebar minify button -->
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
             <!-- end sidebar minify button -->
