@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
 $mysqli = initializeMysqlConnection();
 ?>
 <!DOCTYPE html>
@@ -44,6 +45,32 @@ $mysqli = initializeMysqlConnection();
             <div class="row">
                 <!-- begin col-12 -->
                 <div class="col-lg-12">
+                    <?php 
+                    $successMessage = '';
+                    $errorMessage = '';
+                    if (isset($_SESSION['action'])){
+                        if ($_SESSION['action'] == 'update'){
+                            $successMessage = 'Event updated successfully!';
+                            $errorMessage = 'Unable to update event successfully!';
+                        }
+
+                        unset($_SESSION['action']);
+                    }
+
+                    // Determine if the user entered an incorrect email/password combo
+					if (isset($_SESSION['alert'])){
+
+						if ($_SESSION['alert'] == 'error'){
+							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
+							echo $alertBanner->getAlertBannerHtml();
+						} else if ($_SESSION['alert'] == 'success'){
+                            $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
+							echo $alertBanner->getAlertBannerHtml();
+                        }
+						
+						unset($_SESSION['alert']);
+					}
+                    ?>
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -127,7 +154,8 @@ $mysqli = initializeMysqlConnection();
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
-									<button type="submit" class="btn btn-default">Update</button>
+									<button type="submit" name="update" class="btn btn-default" style="margin-right: 1em">Update</button>
+                                    <button type="submit" name="delete" class="btn btn-danger">Delete Event</button>
 								</div>
                             </form>
                         </div>
@@ -193,6 +221,8 @@ $mysqli = initializeMysqlConnection();
 	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
 	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
