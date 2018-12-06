@@ -48,6 +48,32 @@ $todaysDate = date('m/d/y');
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-8 -->
+                <?php 
+                    $successMessage = '';
+                    $errorMessage = '';
+                    if (isset($_SESSION['action'])){
+                        if ($_SESSION['action'] == 'delete'){
+                            $successMessage = 'Event deleted successfully!';
+                            $errorMessage = 'Unable to delete event successfully!';
+                        }
+
+                        unset($_SESSION['action']);
+                    }
+
+                    // Determine if the user entered an incorrect email/password combo
+					if (isset($_SESSION['alert'])){
+
+						if ($_SESSION['alert'] == 'error'){
+							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
+							echo $alertBanner->getAlertBannerHtml();
+						} else if ($_SESSION['alert'] == 'success'){
+                            $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
+							echo $alertBanner->getAlertBannerHtml();
+                        }
+						
+						unset($_SESSION['alert']);
+					}
+                    ?>
                 <div class="col-lg-8">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
