@@ -50,13 +50,15 @@ $todaysDate = date('m/d/y');
             <div class="row">
                 <!-- begin col-8 -->
                 <div class="col-lg-8">
-                    <div class="widget-chart with-sidebar inverse-mode">
-                        <div class="widget-chart-content bg-black">
-                            <h4 class="chart-title">
-                                Upcoming Events
+                    <div class="panel panel-inverse" data-sortable-id="index-1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Add New Event
                             </h4>
+                        </div>
+                        <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="upcoming-events" class="table">
                                     <thead>
                                         <th>Event Name</th>
                                         <th>Event Description</th>
@@ -64,46 +66,34 @@ $todaysDate = date('m/d/y');
                                         <th>Start Time</th>
                                         <th>End Time</th>
                                     </thead>
-                                    <?php 
-                                    // $sqlQuery = 'CALL spSelectUpcomingEvents();';
-                                    $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date DESC;';
-                                    $rs = $mysqli->query($sqlQuery);
-                                    $count = 0;
-                                    if ($rs->num_rows > 0){
-                                        while ($row = $rs->fetch_assoc()){
-                                            echo '<tr>';
-                                            echo '<td>' . htmlentities($row['event_name']) . '</td>';
-                                            echo '<td>' . htmlentities($row['event_desc']) . '</td>';
-                                            echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
-                                            echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                            echo '<td>' . date('h:i a', strtotime($row['end_time'])) . ' <a href="editevent.php?id=' . $row['id'] . '"> Edit</a></td>';
-                                            echo '</tr>';
-                                            $count++;
-                                        }   
+                                    <tbody>
+                                        <?php 
+                                        $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date DESC;';
+                                        $rs = $mysqli->query($sqlQuery);
+                                        $count = 0;
+                                        if ($rs->num_rows > 0){
+                                            while ($row = $rs->fetch_assoc()){
+                                                echo '<tr>';
+                                                echo '<td>' . htmlentities($row['event_name']) . '</td>';
+                                                echo '<td>' . htmlentities($row['event_desc']) . '</td>';
+                                                echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
+                                                echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
+                                                echo '<td>' . date('h:i a', strtotime($row['end_time'])) . ' <a href="editevent.php?id=' . $row['id'] . '"> Edit</a></td>';
+                                                echo '</tr>';
+                                                $count++;
+                                            }   
 
-                                        $mysqli->next_result();
-                                    }
-                                    ?>
-
+                                            $mysqli->next_result();
+                                        }
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="widget-chart-sidebar bg-black-darker">
-                            <div class="chart-number">
-                                <?= $count ?>
-                                <small>Total Upcoming Events</small>
-                            </div>
-                            <!-- <div id="visitors-donut-chart" class="nvd3-inverse-mode p-t-10" style="height: 180px"></div> -->
-                            <!-- <ul class="chart-legend f-s-11">
-                                <li><i class="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New
-                                        Visitors</span></li>
-                                <li><i class="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return
-                                        Visitors</span></li>
-                            </ul> -->
                         </div>
                     </div>
                 </div>
                 <!-- end col-8 -->
+
                 <!-- begin col-4 -->
                 <div class="col-lg-4">
                     <?php 
@@ -192,6 +182,7 @@ $todaysDate = date('m/d/y');
                 <!-- end col-4 -->
             </div>
             <!-- end row -->
+
             <div class="row">
                 <!-- begin col-8 -->
                 <div class="col-lg-8">
@@ -235,13 +226,6 @@ $todaysDate = date('m/d/y');
                                 <?= $allEventCount ?>
                                 <small>Total Events</small>
                             </div>
-                            <!-- <div id="visitors-donut-chart" class="nvd3-inverse-mode p-t-10" style="height: 180px"></div> -->
-                            <!-- <ul class="chart-legend f-s-11">
-                                <li><i class="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New
-                                        Visitors</span></li>
-                                <li><i class="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return
-                                        Visitors</span></li>
-                            </ul> -->
                         </div>
                     </div>
                 </div>
@@ -305,11 +289,14 @@ $todaysDate = date('m/d/y');
 	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
 	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
             DashboardV2.init();
             FormPlugins.init();
+            $('#upcoming-events').DataTable();
         });
     </script>
 </body>
