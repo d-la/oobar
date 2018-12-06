@@ -64,6 +64,7 @@ $todaysDate = date('m/d/y');
                                         <th>Event Date</th>
                                         <th>Start Time</th>
                                         <th>End Time</th>
+                                        <th>Edit</th>
                                     </thead>
                                     <tbody>
                                         <?php 
@@ -77,7 +78,8 @@ $todaysDate = date('m/d/y');
                                                 echo '<td>' . htmlentities($row['event_desc']) . '</td>';
                                                 echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
                                                 echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                                echo '<td>' . date('h:i a', strtotime($row['end_time'])) . ' <a href="editevent.php?id=' . $row['id'] . '"> Edit</a></td>';
+                                                echo '<td>' . date('h:i a', strtotime($row['end_time'])) . '</td>';
+                                                echo '<td><a href="editevent.php?id=' . $row['id'] . '" class="edit-button"><i class="fa fa-cogs"></i></a></td>';
                                                 echo '</tr>';
                                                 $count++;
                                             }   
