@@ -38,9 +38,8 @@ $todaysDate = date('m/d/y');
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item active">Events</li>
             </ol>
             <!-- end breadcrumb -->
             <!-- begin page-header -->

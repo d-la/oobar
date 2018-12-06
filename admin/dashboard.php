@@ -32,8 +32,6 @@ $mysqli = initializeMysqlConnection();
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
             <!-- end breadcrumb -->
@@ -43,15 +41,16 @@ $mysqli = initializeMysqlConnection();
             <!-- begin row -->
             <div class="row">
                 <!-- begin col-8 -->
-                <div class="col-lg-8">
-                    <div class="widget-chart with-sidebar inverse-mode">
-                        <div class="widget-chart-content bg-black">
-                            <h4 class="chart-title">
-                                Contact Submissions
-                                <small>Where do our visitors come from</small>
+                <div class="col-lg-6">
+                    <div class="panel panel-inverse" data-sortable-id="index-1">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                Upcoming Events
                             </h4>
+                        </div>
+                        <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="contacts" class="table">
                                     <thead>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -59,49 +58,37 @@ $mysqli = initializeMysqlConnection();
                                         <th>Date Contacted</th>
                                         <th>Message</th>
                                     </thead>
-                                    <?php 
-                                    $sqlQuery = 'SELECT * FROM contact_submissions;';
-                                    $rs = $mysqli->query($sqlQuery);
-                                    $count = 0;
-                                    if ($rs->num_rows > 0){
-                                        while ($row = $rs->fetch_assoc()){
-                                            echo '<tr>';
-                                            echo '<td>' . htmlentities($row['first_name']) . ' ' . htmlentities($row['last_name']) . '</td>';
-                                            echo '<td>' . $row['email'] . '</td>';
-                                            echo '<td>' . htmlentities($row['phone_number']) . '</td>';
-                                            echo '<td>' . date('M d Y, h:i', strtotime($row['contact_date'])) . '</td>';
-                                            echo '<td>' . htmlentities($row['message']) . '</td>';
-                                            echo '</tr>';
-                                            $count++;
-                                        }   
+                                    <tbody>
+                                        <?php 
+                                        $sqlQuery = 'SELECT * FROM contact_submissions;';
+                                        $rs = $mysqli->query($sqlQuery);
+                                        $count = 0;
+                                        if ($rs->num_rows > 0){
+                                            while ($row = $rs->fetch_assoc()){
+                                                echo '<tr>';
+                                                echo '<td>' . htmlentities($row['first_name']) . ' ' . htmlentities($row['last_name']) . '</td>';
+                                                echo '<td>' . $row['email'] . '</td>';
+                                                echo '<td>' . htmlentities($row['phone_number']) . '</td>';
+                                                echo '<td>' . date('M d Y, h:i', strtotime($row['contact_date'])) . '</td>';
+                                                echo '<td>' . htmlentities($row['message']) . '</td>';
+                                                echo '</tr>';
+                                                $count++;
+                                            }   
+                                                
+                                                $mysqli->next_result();
+                                            }
                                         
-                                        $mysqli->next_result();
-                                    }
-                                    
-                                    
-                                    ?>
-
+                                        
+                                        ?>
+                                    </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="widget-chart-sidebar bg-black-darker">
-                            <div class="chart-number">
-                                <?= $count ?>
-                                <small>Total submissions</small>
-                            </div>
-                            <!-- <div id="visitors-donut-chart" class="nvd3-inverse-mode p-t-10" style="height: 180px"></div> -->
-                            <!-- <ul class="chart-legend f-s-11">
-                                <li><i class="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New
-                                        Visitors</span></li>
-                                <li><i class="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return
-                                        Visitors</span></li>
-                            </ul> -->
                         </div>
                     </div>
                 </div>
                 <!-- end col-8 -->
                 <!-- begin col-4 -->
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -117,9 +104,10 @@ $mysqli = initializeMysqlConnection();
                                     <th>Event Date</th>
                                     <th>Start Time</th>
                                     <th>End Time</th>
+                                    <th>Edit</th>
                                 </thead>
                                 <?php 
-                                $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date DESC;';
+                                $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC;';
                                 $rs = $mysqli->query($sqlQuery);
 
                                 $count = 0;
@@ -130,7 +118,8 @@ $mysqli = initializeMysqlConnection();
                                         echo '<td>' . htmlentities($row['event_desc']) . '</td>';
                                         echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
                                         echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                        echo '<td>' . date('h:i a', strtotime($row['end_time'])) . ' <a href="editevent.php?id=' . $row['id'] . '"> Edit</a></td>';
+                                        echo '<td>' . date('h:i a', strtotime($row['end_time'])) . '</td>';
+                                        echo '<td><a href="editevent.php?id=' . $row['id'] . '" class="edit-button"><i class="fa fa-cogs"></i></a></td>';
                                         echo '</tr>';
                                         $count++;
                                     }   
@@ -180,10 +169,12 @@ $mysqli = initializeMysqlConnection();
     <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
     <!-- ================== END PAGE LEVEL JS ================== -->
 
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
             DashboardV2.init();
+            $('#contacts').DataTable();
         });
     </script>
 </body>

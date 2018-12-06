@@ -32,8 +32,7 @@ $mysqli = initializeMysqlConnection();
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
                 <li class="breadcrumb-item active">Contact Submissions</li>
             </ol>
             <!-- end breadcrumb -->
