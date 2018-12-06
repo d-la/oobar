@@ -38,9 +38,8 @@ $todaysDate = date('m/d/y');
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item active">Gallery</li>
             </ol>
             <!-- end breadcrumb -->
             <!-- begin page-header -->
@@ -96,7 +95,7 @@ $todaysDate = date('m/d/y');
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover">
+                                    <table id="gallery" class="table table-hover">
                                         <thead>
                                             <th>Image Name</th>
                                             <th>Image Desc</th>
@@ -185,11 +184,14 @@ $todaysDate = date('m/d/y');
 	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
 	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
             DashboardV2.init();
             FormPlugins.init();
+            $('#gallery').DataTable();
         });
     </script>
 </body>
