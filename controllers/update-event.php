@@ -3,46 +3,86 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 $mysqli = initializeMysqlConnection();
 
+// Both actions will require the ID so leave it out of the conditional
 $eventId = filter_var($_POST['eventId'], FILTER_VALIDATE_INT);
-$eventTitle = addslashes($_POST['eventName']);
-$eventDesc = addslashes($_POST['eventDesc']);
-$eventDate = date("Y-m-d", strtotime($_POST['eventDate']));
-$eventStartTime = date('H:i:s', strtotime($_POST['startTime']));
-$eventEndTime = date('H:i:s', strtotime($_POST['endTime']));
 
-$directoryToUpload = $_SERVER['DOCUMENT_ROOT'] . '/img/events/banners/' . $eventId . '/';
-$directoryToUploadWithFileName = $directoryToUpload . $fileName;
+if (isset($_POST['delete'])){
+    $_SESSION['action'] = 'delete';
 
-$registrationLink = $_POST['registrationLink'];
+    // Delete the event
+    $sqlQuery = 'DELETE FROM events WHERE id = ' . $eventId;
+    $result = $mysqli->query($sqlQuery);
 
-$url = $mysqli->real_escape_string($registrationLink);
-
-if ($fileError === 0){
-    die();
-} else {
-    // Perform upload
-
-    if (!is_dir($directoryToUpload)){
-        mkdir($directoryToUpload, 0777, true);
+    // Send a banner alert back to the user
+    if ($result == true){
+        $_SESSION['alert'] = 'success';
+    } else {
+        $_SESSION['alert'] = 'error';
     }
-    move_uploaded_file($fileTmp, $directoryToUploadWithFileName);
+
+    header('Location: /admin/events.php');
+    die();
+
+} else if (isset($_POST['update'])){
+    $_SESSION['action'] = 'update';
+
+    $eventTitle = addslashes($_POST['eventName']);
+    $eventDesc = addslashes($_POST['eventDesc']);
+    $eventDate = date("Y-m-d", strtotime($_POST['eventDate']));
+    $eventStartTime = date('H:i:s', strtotime($_POST['startTime']));
+    $eventEndTime = date('H:i:s', strtotime($_POST['endTime']));
+
+    $eventsData = array(
+        'event_name' => $eventTitle,
+        'event_desc' => $eventDesc,
+        'event_date' => $eventDate,
+        'start_time' => $eventStartTime,
+        'end_time'   => $eventEndTime
+    );
+
+    if (!empty($_POST['registrationLink'])){
+        $registrationLink = $_POST['registrationLink'];
+    
+        $url = $mysqli->real_escape_string($registrationLink);
+
+        $eventsData['registration_url'] = $url;
+    }
+    
+    if ((!empty($_FILES['bannerImage']['name'])) && (isset($_FILES['bannerImage']['tmp_name']))){
+        $fileName = $_FILES['bannerImage']['name'];
+        $fileSize = $_FILES['bannerImage']['size'];
+        $fileType = $_FILES['bannerImage']['type'];
+        $fileTmp = $_FILES['bannerImage']['tmp_name'];
+
+        $directoryToUpload = $_SERVER['DOCUMENT_ROOT'] . '/img/events/banners/' . $eventId . '/';
+        $directoryToUploadWithFileName = $directoryToUpload . $fileName;
+        $pathForFrontEnd = '/img/events/banners/' . $eventId . '/' . $fileName;
+
+        if (!is_dir($directoryToUpload)){
+            mkdir($directoryToUpload, 0777, true);
+        }
+        move_uploaded_file($fileTmp, $directoryToUploadWithFileName);
+
+        $eventsData['banner_path'] = $pathForFrontEnd;
+    }
+    
+    $sqlQuery = "UPDATE events SET ";
+    foreach ($eventsData as $databaseField => $databaseValue){
+        if (!empty($databaseValue)){
+            $sqlQuery .= $databaseField . " = '" . addslashes($databaseValue) . "', ";
+        }
+    }
+    $sqlQuery = substr($sqlQuery, 0, strlen($sqlQuery) - 2);
+    $sqlQuery .= " WHERE id = $eventId;";
+    $result = $mysqli->query($sqlQuery);
+
+    if ($result == true){
+        $_SESSION['alert'] = 'success';
+    } else {
+        $_SESSION['alert'] = 'error';
+    }
+
+    header('Location: /admin/editevent.php?id=' . $eventId);
+    die();
 }
-
-// $sqlQuery = "CALL spUpdateEventDetails($eventId, '" . addslashes($eventTitle) . "', '" . addslashes($eventDesc) . "', '" . $eventDate . "', '" . $eventStartTime . "', '" . $eventEndTime . "');";
-
-$directoryToUploadWithFileName = addslashes($directoryToUploadWithFileName);
-$sqlQuery = "UPDATE events SET event_name = '$eventTitle', event_desc = '$eventDesc', event_date = '$eventDate', start_time = '$eventStartTime', end_time = '$eventEndTime', updated_date = NOW(), registration_url = '$registrationLink', banner_path = '$directoryToUploadWithFileName'";
-$sqlQuery .= " WHERE id = $eventId;";
-echo $sqlQuery;
-// $result = $mysqli->query($sqlQuery);
-
-// if ($result == true){
-//     header('Location: /admin/events.php');
-//     die();
-// } else {
-//     header('Location: /admin/events.php');
-//     die();
-// }
-
-
 ?>
