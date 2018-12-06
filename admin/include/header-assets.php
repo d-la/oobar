@@ -20,6 +20,8 @@
 <link href="/admin/admin_assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/>
+
 <!-- ================== BEGIN BASE JS ================== -->
 <script src="/admin/admin_assets/plugins/pace/pace.min.js"></script>
 <!-- ================== END BASE JS ================== -->
