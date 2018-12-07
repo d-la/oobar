@@ -11,45 +11,42 @@ $fileType = $_FILES['galleryImage']['type'];
 $fileSize = $_FILES['galleryImage']['size'];
 // Temporary Location
 $fileTmp = $_FILES['galleryImage']['tmp_name'];
-$fileError = $_FILES['galleryImage']['error'];
-$registrationLink = $_POST['registrationLink'];
 
-// Get the file extension
-$fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+if ((isset($fileName)) && (!empty($fileName))){
 
-$sqlQuery = "INSERT INTO events (name, desc, path, create_date)";
-$sqlQuery .= "VALUES ('" . addslashes($imageName) . "', '" . addslashes($imageDesc) . "', '" . addslashes($pathToBeSaved) . "', NOW());";
+    $directoryToUploadWithFileName = '/img/gallery/' . $fileName;
 
-$result = $mysqli->query($sqlQuery);
-
-// Full directory to upload
-$directoryToUpload = $_SERVER['DOCUMENT_ROOT'] . '/img/gallery/';
-
-// Path that will pull the file on front end
-$basePathForFrontEnd = '/img/events/banners/';
-
-$pathToBeSaved = $basePathForFrontEnd . $fileName;
-
-$directoryToUploadWithFileName = $directoryToUpload . $fileName;
-
-if (file_exists($directoryToUploadWithFileName)){
-    $_SESSION['alert'] = 'file error';
-    header('Location: /admin/gallery.php');
-    die();
-} else if (!file_exists($directoryToUploadWithFileName) && ($result)) {
-    // Perform upload
-    $fileStatus = move_uploaded_file($fileTmp, $directoryToUploadWithFileName);
-
-    if ($fileStatus){
-        $_SESSION['alert'] = 'success';
-        header('Location: /admin/gallery.php');
-        die();
-    } else {
+    if (file_exists($directoryToUploadWithFileName)){
+        $_SESSION['img_name'] = true;
         $_SESSION['alert'] = 'error';
         header('Location: /admin/gallery.php');
         die();
+    } else if (!file_exists($directoryToUploadWithFileName)) {
+        // Perform upload
+        $fileStatus = move_uploaded_file($fileTmp, $_SERVER['DOCUMENT_ROOT'] . $directoryToUploadWithFileName);
+
+        if ($fileStatus){
+
+            $sqlQuery = "INSERT INTO gallery_images (`name`, description, path, create_date)";
+            $sqlQuery .= " VALUES ('" . addslashes($imageName) . "', '" . addslashes($imageDesc) . "', '" . addslashes($directoryToUploadWithFileName) . "', NOW());";
+            $result = $mysqli->query($sqlQuery);
+            error_log($mysqli->error);
+
+            if ($result == true){
+                $_SESSION['alert'] = 'success';
+                header('Location: /admin/gallery.php');
+                die();
+            } else {
+                $_SESSION['alert'] = 'error';
+                header('Location: /admin/gallery.php');
+                die();
+            }
+        } else {
+            $_SESSION['alert'] = 'error';
+            header('Location: /admin/gallery.php');
+            die();
+        }
     }
 }
-
 
 ?>
