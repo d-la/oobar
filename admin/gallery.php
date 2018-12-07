@@ -49,6 +49,28 @@ $todaysDate = date('m/d/y');
             <div class="row">
                 <!-- begin col-8 -->
                 <div class="col-lg-8">
+                    <?php 
+					if (isset($_SESSION['alert'])){
+
+						if ($_SESSION['alert'] == 'error'){
+                            $errorMessage = '';
+
+                            if ($_SESSION['image_name'] == true){
+                                $errorMessage = 'Image already exists, please upload with a new name!';
+                            } else {
+                                $errorMessage = 'Unable to upload gallery image!';
+                            }
+
+							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
+							echo $alertBanner->getAlertBannerHtml();
+						} else if ($_SESSION['alert'] == 'success'){
+                            $alertBanner = new AlertBanner($_SESSION['alert'], 'Gallery image uploaded successfully!');
+							echo $alertBanner->getAlertBannerHtml();
+                        }
+						
+						unset($_SESSION['alert']);
+					}
+                    ?>
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -105,14 +127,14 @@ $todaysDate = date('m/d/y');
                                         <tbody>
                                             <?php 
                                             $mysqli = initializeMysqlConnection();
-                                            $sqlQuery = 'SELECT id, name, description, path FROM gallery;';
+                                            $sqlQuery = 'SELECT id, name, description, path FROM gallery_images;';
 
                                             $rs = $mysqli->query($sqlQuery);
                                             if ($rs->num_rows > 0){
                                                 while ($row = $rs->fetch_assoc()){
                                                     echo '<tr>';
                                                     echo '<td>' . $row['name'] . '</td>';
-                                                    echo '<td>' . $row['descripiton'] . '</td>';
+                                                    echo '<td>' . $row['description'] . '</td>';
                                                     echo '<td><a href="javascript:;" data-gallery-id="' . $row['id'] . '" data-click="edit"><i class="fa fa-cogs"></i></a>';
                                                     echo '<td><a href="javascript:;" data-gallery-id="' . $row['id'] . '" data-click="delete"><i class="fa fa-ban"></i></a>';
                                                 }
