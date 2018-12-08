@@ -34,7 +34,7 @@ if (!empty($requestedPath[2])){
             </li>
             <li>
                 <ul class="nav nav-profile">
-                    <li><a href="javascript:;"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href="settings.php"><i class="fa fa-cog"></i> Settings</a></li>
                 </ul>
             </li>
         </ul>
@@ -50,7 +50,6 @@ if (!empty($requestedPath[2])){
             }
             ?>
                 <a href="dashboard.php">
-                    <b class="caret"></b>
                     <i class="fa fa-th-large"></i>
                     <span>Dashboard</span>
                 </a>
@@ -63,7 +62,7 @@ if (!empty($requestedPath[2])){
             }
             ?>
                 <a href="contacts.php">
-                    <i class="fab fa-simplybuilt"></i>
+                    <i class="fa fa-list-ol"></i>
                     <span>Contact Submissions</span>
                 </a>
             </li>
@@ -87,7 +86,7 @@ if (!empty($requestedPath[2])){
             }
             ?>
                 <a href="gallery.php">
-                    <i class="fa fa-calendar"></i> 
+                    <i class="fa fa-image"></i> 
                     <span>Gallery</span>
                 </a>
             </li>
