@@ -43,7 +43,7 @@ $todaysDate = date('m/d/y');
             </ol>
             <!-- end breadcrumb -->
             <!-- begin page-header -->
-            <h1 class="page-header">Events</h1>
+            <h1 class="page-header">Gallery</h1>
             <!-- end page-header -->
             <!-- begin row -->
             <div class="row">

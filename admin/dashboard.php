@@ -45,7 +45,7 @@ $mysqli = initializeMysqlConnection();
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                Upcoming Events
+                                Contact Form Submissions
                             </h4>
                         </div>
                         <div class="panel-body">
@@ -60,7 +60,7 @@ $mysqli = initializeMysqlConnection();
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $sqlQuery = 'SELECT * FROM contact_submissions;';
+                                        $sqlQuery = 'SELECT * FROM contact_submissions ORDER BY contact_date DESC;';
                                         $rs = $mysqli->query($sqlQuery);
                                         $count = 0;
                                         if ($rs->num_rows > 0){
