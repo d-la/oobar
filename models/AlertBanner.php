@@ -22,21 +22,21 @@ class AlertBanner{
         if ( isset($this->alertType) && (isset($this->alertMessage)) ){
             switch ($this->alertType){
                 case 'success':
-                    $this->alertHtml = '<div class="alert alert-success alert-dismissible" role="alert">';
+                    $this->alertHtml = '<div class="col-lg-12"><div class="alert alert-success alert-dismissible" role="alert">';
                     $this->alertHtml .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                    $this->alertHtml .= $this->alertMessage . '</div>';
+                    $this->alertHtml .= $this->alertMessage . '</div></div>';
                     break;
                 
                 case 'warning':
-                    $this->alertHtml = '<div class="alert alert-warning alert-dismissible" role="alert">';
+                    $this->alertHtml = '<div class="col-lg-12"><div class="alert alert-warning alert-dismissible" role="alert">';
                     $this->alertHtml .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                    $this->alertHtml .= $this->alertMessage . '</div>';
+                    $this->alertHtml .= $this->alertMessage . '</div></div>';
                     break;
                 
                 case 'error':
-                    $this->alertHtml = '<div class="alert alert-danger alert-dismissible" role="alert">';
+                    $this->alertHtml = '<div class="col-lg-12"><div class="alert alert-danger alert-dismissible" role="alert">';
                     $this->alertHtml .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                    $this->alertHtml .= $this->alertMessage . '</div>';
+                    $this->alertHtml .= $this->alertMessage . '</div></div>';
                     break;
             }
         }
