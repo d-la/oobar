@@ -319,7 +319,7 @@ $mysqli = initializeMysqlConnection();
                         <form id="contact-submission" action="controllers/contact-submission.php" method="POST" class="form-horizontal">
                             <div id="firstName" class="form-group row m-b-15">
                                 <div class="col-md-9">
-                                    <input required="required" type="text" name="name" class="form-control" />
+                                    <input type="text" name="name" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -414,7 +414,6 @@ $mysqli = initializeMysqlConnection();
                 handleContactFormSubmission();
             });
             
-            // TODO: Finish ajax submission and test form
             let handleContactFormSubmission = function(){
                 let submitButton = $('button[type="submit"]');
 
