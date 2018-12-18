@@ -86,7 +86,7 @@ $mysqli = initializeMysqlConnection();
         <!-- end #header -->
 
         <div id="home-new" >
-            <img src="/img/oobar_view_moet.jpg" class="home-new__banner" alt="Banner">
+            <img src="/img/oobar_view_moet_compressed.jpg" class="home-new__banner" alt="Banner">
         </div>
 
         <!-- begin #home -->
@@ -128,7 +128,7 @@ $mysqli = initializeMysqlConnection();
         <!-- begin #milestone -->
         <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin content-bg -->
-            <div class="content-bg" style="background-image: url(/img/oobar_new_banner.jpg)" data-paroller="true"
+            <div class="content-bg" style="background-image: url(/img/oobar_new_banner_compressed.jpg)" data-paroller="true"
                 data-paroller-factor="0.5" data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01"></div>
             <!-- end content-bg -->
             <!-- begin container -->
