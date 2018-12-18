@@ -30,7 +30,7 @@ $mysqli = initializeMysqlConnection();
     <link href="/css/custom-styles.min.css" id="custom-styles" rel="stylesheet" />
 
     <!-- Light slider CSS -->
-    <link type="text/css" rel="stylesheet" href="/include/css/lightslider.css" />    
+    <!-- <link type="text/css" rel="stylesheet" href="/include/css/lightslider.css" />     -->
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/pace/pace.min.js"></script>
@@ -311,9 +311,9 @@ $mysqli = initializeMysqlConnection();
                 <div class="row">
                     <!-- begin col-6 -->
                     <div class="col-md-6" data-animation="true" data-animation-type="fadeInLeft">
-                        <h3>For event inquiries or questions, please contact us through the form.</h3>
+                        <h4>Oo Bar & Lounge</h4>
                         <p>
-                            <strong>Oobar </strong><br />
+                            <!-- <strong>Oobar </strong><br /> -->
                             137-72 Northern Blvd<br />
                             Flushing, New York 11354<br />
                             8th Floor <br />
@@ -492,7 +492,7 @@ $mysqli = initializeMysqlConnection();
         });
     </script>
     <script src="/include/js/carousel.min.js"></script>
-    <script src="/include/js/lightslider.js"></script>
+    <!-- <script src="/include/js/lightslider.js"></script> -->
         <script>
             let eventsCarousel = new Carousel({
                 carousel: '#events-carousel',
