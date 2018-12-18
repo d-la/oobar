@@ -12,7 +12,7 @@ $mysqli = initializeMysqlConnection();
     <meta charset="utf-8" />
     <title>Oo bar | Flushing Queens</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-    <meta content="" name="description" />
+    <meta content="Website for Oo bar and lounge located in Flushing Queens, NYC" name="description" />
     <meta content="" name="author" />
 
     <link rel="shortcut icon" type="image/png" href="img/the_one_favicon1.png"/>
@@ -86,7 +86,7 @@ $mysqli = initializeMysqlConnection();
         <!-- end #header -->
 
         <div id="home-new" >
-            <img src="/img/oobar-view.jpg" class="home-new__banner" alt="Banner">
+            <img src="/img/oobar_view_moet.jpg" class="home-new__banner" alt="Banner">
         </div>
 
         <!-- begin #home -->
