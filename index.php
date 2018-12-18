@@ -29,6 +29,9 @@ $mysqli = initializeMysqlConnection();
     <!-- Custom CSS -->
     <link href="/css/custom-styles.min.css" id="custom-styles" rel="stylesheet" />
 
+    <!-- Light slider CSS -->
+    <link type="text/css" rel="stylesheet" href="/include/css/lightslider.css" />    
+
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/pace/pace.min.js"></script>
     <!-- ================== END BASE JS ================== -->
@@ -82,19 +85,23 @@ $mysqli = initializeMysqlConnection();
         </div>
         <!-- end #header -->
 
+        <div id="home-new" >
+            <img src="/img/oobar-view.jpg" class="home-new__banner" alt="Banner">
+        </div>
+
         <!-- begin #home -->
-        <div id="home" class="content has-bg home">
+        <!-- <div id="home" class="content has-bg home"> -->
             <!-- begin content-bg -->
-            <div id="main-content" class="content-bg" style="background-image: url(/img/oobar-view.jpg);" data-paroller="true"
+            <!-- <div id="main-content" class="content-bg" style="background-image: url(/img/oobar-view.jpg);" data-paroller="true"
                 data-paroller-factor="0.5" data-paroller-factor-xs="0.25">
-            </div>
+            </div> -->
             <!-- end content-bg -->
             <!-- begin container -->
-            <div class="container home-content">
+            <!-- <div class="container home-content">
                 
-            </div>
+            </div> -->
             <!-- end container -->
-        </div>
+        <!-- </div> -->
         <!-- end #home -->
 
         <!-- begin #about -->
@@ -121,7 +128,7 @@ $mysqli = initializeMysqlConnection();
         <!-- begin #milestone -->
         <div id="milestone" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin content-bg -->
-            <div class="content-bg" style="background-image: url(/img/oobar-cocktails.jpg)" data-paroller="true"
+            <div class="content-bg" style="background-image: url(/img/oobar_new_banner.jpg)" data-paroller="true"
                 data-paroller-factor="0.5" data-paroller-factor-md="0.01" data-paroller-factor-xs="0.01"></div>
             <!-- end content-bg -->
             <!-- begin container -->
@@ -485,6 +492,7 @@ $mysqli = initializeMysqlConnection();
         });
     </script>
     <script src="/include/js/carousel.min.js"></script>
+    <script src="/include/js/lightslider.js"></script>
         <script>
             let eventsCarousel = new Carousel({
                 carousel: '#events-carousel',
