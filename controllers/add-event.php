@@ -77,11 +77,11 @@ if ($result == true){
 }
 
 function returnRandomFileName($directoryToUpload, $fileExtension){
-    $randomFileName = 'event_banner_' . rand(0, 10000) . $fileExtension;
+    $randomFileName = 'event_banner_' . rand(0, 10000) . '.' . strtolower($fileExtension);
     $newUploadPath = $directoryToUpload . $randomFileName;
 
     if (file_exists($newUploadPath)){
-        return returnRandomFileName($directoryToUpload);
+        return returnRandomFileName($directoryToUpload, $fileExtension);
     } else {
         return $newUploadPath;
     }
