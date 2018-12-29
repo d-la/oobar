@@ -329,6 +329,31 @@ $mysqli = initializeMysqlConnection();
                             8th Floor <br />
                             P: (718) 886-3555<br />
                         </p>
+                        <p>
+                        <strong>
+                        Dress Code Strictly Enforced Thursday Through Sunday
+                        </strong>
+                        <br />
+                        <br />
+                        Dress to impress, No baggy jeans, athletic wear, timbs , hats , sneaker, t-shirts, beanie.
+                        <br />
+                        <br />
+                        <strong>
+                        Suggested attire for men:
+                        </strong>
+                        <br />
+                        Collar shirt are a must, business casual, dress shirts are not required.
+                        <br />
+                        <br />
+                        <strong>
+                        Suggested attire for women:
+                        </strong>
+                        <br />
+                        Classy and sexy, heels and dresses are suggested.
+                        <br />
+                        <br />
+                        Management reserves the right to refuse admission to guests that are not properly dressed.
+                        </p>
                     </div>
                     <!-- end col-6 -->
                     <!-- begin col-6 -->
