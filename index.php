@@ -148,7 +148,7 @@ $mysqli = initializeMysqlConnection();
                     <div id="events-carousel" class="carousel">
                         <?php 
                             // $sqlQuery = 'CALL spSelectUpcomingEvents();';
-                            $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE();';
+                            $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC;';
                             $rs = $mysqli->query($sqlQuery);
                             $count = 0;
                             $dotsCount = 0;
