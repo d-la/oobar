@@ -2,6 +2,17 @@
     &-container{
         text-align: center;
     }
+
+    &-gold{
+        background-color: $theme-color-gold;
+        color: #FFF;
+
+        &:hover{
+            background-color: $theme-color-light-gold;
+            // background-color: $theme-color-dark-gold;
+            color: #000;
+        }
+    }
 }
 
 .button{
