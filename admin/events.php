@@ -67,6 +67,7 @@ $todaysDate = date('m/d/y');
 							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
 							echo $alertBanner->getAlertBannerHtml();
 						} else if ($_SESSION['alert'] == 'success'){
+                            $successMessage = 'Event added successfully!';
                             $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
 							echo $alertBanner->getAlertBannerHtml();
                         }
