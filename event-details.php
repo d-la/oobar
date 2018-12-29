@@ -115,7 +115,7 @@ $eventId = $_GET['eventid'];
                             <?php 
                             if (!empty($registrationUrl)){ ?>
                             <div class="event__cta">
-                                <a href="<?= $registrationUrl ?>" class="btn">Register here!</a>
+                                <a href="<?= $registrationUrl ?>" class="btn btn-gold">Register here!</a>
                             </div>
                             <?php 
                             }
