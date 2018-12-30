@@ -79,7 +79,7 @@ $todaysDate = date('m/d/y');
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                Add New Event
+                                All Events
                             </h4>
                         </div>
                         <div class="panel-body">
@@ -95,7 +95,7 @@ $todaysDate = date('m/d/y');
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date DESC;';
+                                        $sqlQuery = 'SELECT * FROM events';
                                         $rs = $mysqli->query($sqlQuery);
                                         $count = 0;
                                         if ($rs->num_rows > 0){
