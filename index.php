@@ -97,7 +97,7 @@ $mysqli = initializeMysqlConnection();
         <!-- end #header -->
 
         <div id="home-new" >
-            <img src="/img/oobar_view_moet_compressed.jpg" class="home-new__banner" alt="Banner">
+            <img src="/img/oobar_view_small_height.jpg" class="home-new__banner" alt="Banner">
         </div>
 
         <!-- begin #home -->
