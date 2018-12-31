@@ -84,8 +84,7 @@ if (intval($eventId)){
                     <a href="index.php" class="navbar-brand">
                         <!-- <span class="brand-logo"></span> -->
                         <span class="brand-text">
-                            <!-- <span class="text-theme">Color</span> Admin -->
-                            <img src="/img/oobar-logo.jpg" alt="Oobar Logo">
+                            <img src="/img/oobar_logo_small.jpg" alt="Oobar Logo" style="height: 70px !important; max-height: 70px !important;">
                         </span>
                     </a>
                 </div>
@@ -140,7 +139,7 @@ if (intval($eventId)){
             <div class="container">
                 <div class="footer-brand">
                     <!-- <div class="footer-brand-logo"></div> -->
-                    <img src="/img/oobar-logo.jpg" alt="Oobar Logo" width="auto" height="40">
+                    <img src="/img/oobar_logo_small.jpg" alt="Oobar Logo">
                     
                 </div>
                 <p>
