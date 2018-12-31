@@ -3,6 +3,24 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php';
 $mysqli = initializeMysqlConnection();
 
 $eventId = $_GET['eventid'];
+if (intval($eventId)){
+    $sqlQuery = 'SELECT * FROM events WHERE id = ' . $eventId;
+    $rs = $mysqli->query($sqlQuery);
+    if ($rs->num_rows > 0){
+        while ($row = $rs->fetch_assoc()){
+            $eventName = $row['event_name'];
+            $eventDesc = $row['event_desc'];
+            $eventDate = date('M d, Y', strtotime($row['event_date']));
+            $eventTime = date('h:i a', strtotime($row['start_time'])) . ' ' . date('h:i a', strtotime($row['end_time']));
+            $bannerPath = $row['banner_path'];
+
+            if (empty($bannerPath)){
+                $bannerPath = '/img/banner.jpg';
+            }
+            $registrationUrl = $row['registration_url'];
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -26,6 +44,10 @@ $eventId = $_GET['eventid'];
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
+    <meta property="og:title" content="<?= $eventName ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://oobarloungeny.com/eventdetails.php?eventid=<?= $eventId ?>" />
+    <meta property="og:image" content="http://oobarloungeny.com<?= $bannerPath ?>" />
 
     <link rel="shortcut icon" type="image/png" href="img/the_one_favicon1.png"/>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
@@ -81,29 +103,6 @@ $eventId = $_GET['eventid'];
             <!-- end container -->
         </div>
         <!-- end #header -->    
-
-        <?php 
-        
-        if (intval($eventId)){
-            $sqlQuery = 'SELECT * FROM events WHERE id = ' . $eventId;
-            $rs = $mysqli->query($sqlQuery);
-            if ($rs->num_rows > 0){
-                while ($row = $rs->fetch_assoc()){
-                    $eventName = $row['event_name'];
-                    $eventDesc = $row['event_desc'];
-                    $eventDate = date('M d, Y', strtotime($row['event_date']));
-                    $eventTime = date('h:i a', strtotime($row['start_time'])) . ' ' . date('h:i a', strtotime($row['end_time']));
-                    $bannerPath = $row['banner_path'];
-
-                    if (empty($bannerPath)){
-                        $bannerPath = '/img/banner.jpg';
-                    }
-                    $registrationUrl = $row['registration_url'];
-                }
-            }
-        }
-        
-        ?>
 
         <div class="row">
             <div class="col-md-12">
