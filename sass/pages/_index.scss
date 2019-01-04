@@ -36,6 +36,10 @@
     background-color: #494949;
     font-size: 13px;
 
+    .w-100{
+        height: 600px !important;
+    }
+
     .logo-header{
         position: relative;
         width: 100%;
@@ -161,10 +165,6 @@
             &__title{
                 padding-bottom: 5px;
             }
-
-            &__desc{
-
-            }
         }
 
         .events{
@@ -175,6 +175,10 @@
                 padding-top: 15px;
             }
         }
+    }
+
+    .gallery{
+        padding: 2em;
     }
     
     // .footer{

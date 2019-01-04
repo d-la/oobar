@@ -2,7 +2,7 @@
 
     padding: 40px 0;
 
-    background-image: url('/img/footer_image.png');
+        background-image: url('/img/footer_image.png');
         border-top: 1px solid #D9D9D9;
         box-shadow: 0px -2px 4px rgba(0,0,0,0.1);
     
@@ -54,7 +54,7 @@
             margin: 0 auto;
         }
 
-        &__widget{
+        &-widget{
             margin: 1em 0;
         }
     }
@@ -67,7 +67,7 @@
             margin: 0 auto;
         }
 
-        &__widget{
+        &-widget{
             margin: 1em 0;
         }
     }

@@ -74,10 +74,10 @@ $activeNav = ' nav-link--active';
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/img/oobar_front_view_new.jpg" alt="" class="d-block w-100">
+                            <img src="/img/oobar_front_view_new_super_small_height.jpg" alt="" class="d-block w-100">
                         </div>
                         <div class="carousel-item">
-                            <img src="/img/oobar_new_banner_compressed.jpg" alt="" class="d-block w-100">
+                            <img src="/img/oobar_new_banner_compressed_super_small_height.jpg" alt="" class="d-block w-100">
                         </div>
                     </div>
                 </div>
