@@ -1,0 +1,31 @@
+.work{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img{
+        max-width: 100%;
+    }
+
+    .desc{
+        padding: 12px 15px;
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 100%;
+        background: rgba(0,0,0,.7);
+        transition: all .2s linear;
+
+        &-title{
+            color: #FFF;
+            font-size: 14px;
+            display: block;
+            font-weight: 600;
+        }
+    }
+
+    &:hover .desc{
+        margin-top: -62px;
+        transition: all .2s linear;
+    }
+}
