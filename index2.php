@@ -1,6 +1,8 @@
 <?php 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
 $mysqli = initializeMysqlConnection();
+
+$activeNav = ' nav-link--active';
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -51,16 +53,16 @@ $mysqli = initializeMysqlConnection();
     <header class="header-container">
         <div class="container">
             <nav class="nav navbar-expand-lg">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> <i class="fa fa-bars"></i> </span>
                 </button>
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link hover-theme-color" href="index2.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color<?= $activeNav; ?>" href="index2.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#gallery" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#contact" data-click="scroll-to-target">CONTACT <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="gallery.php" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="contact.php" data-click="scroll-to-target">CONTACT <span>&nbsp;</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -90,7 +92,7 @@ $mysqli = initializeMysqlConnection();
 
             </div>
         </section>
-        <section class="about">
+        <section id="about" class="about">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -108,7 +110,7 @@ $mysqli = initializeMysqlConnection();
             </div>
         </section>
 
-        <section class="events">
+        <section id="events" class="events">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -206,60 +208,62 @@ $mysqli = initializeMysqlConnection();
         </section>
     </main>
     <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4 col-lg-4">
-                    <div class="footer-widget">
-                        <h3 class="footer-widget__title">
-                            hotel information
-                        </h3>
-                        <p class="footer-widget__content">
-                            <strong>Check-In: 3PM</strong>
-                            <br />
-                            <strong>Check-Out: 12PM</strong>
-                            <br />
-                            Non-Smoking
-                            <br />
-                            Street Parking
-                            <br />
-                            Pets not allowed!
-                        </p>
+        <div class="footer__container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                hotel information
+                            </h3>
+                            <p class="footer-widget__content">
+                                <strong>Check-In: 3PM</strong>
+                                <br />
+                                <strong>Check-Out: 12PM</strong>
+                                <br />
+                                Non-Smoking
+                                <br />
+                                Street Parking
+                                <br />
+                                Pets not allowed!
+                            </p>
+                        
+                        </div>
                     
                     </div>
-                
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-4">
-                    <div class="footer-widget">
-                        <h3 class="footer-widget__title">
-                            contact us
-                        </h3>
-                        <p class="footer-widget__content">
-                            <strong>137-72 Northern Blvd, Flushing</strong>
-                            <br />
-                            <strong>NY 11354</strong>
-                            <br />
-                            <strong>Phone:</strong> (718) 886-3555
-                            <br />
-                            <strong>Fax:</strong> (718) 886-3553
-                            <br />
-                            <a href="mailto:info@theone-ny.com">info@theone-ny.com</a>
-                        </p>
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                contact us
+                            </h3>
+                            <p class="footer-widget__content">
+                                <strong>137-72 Northern Blvd, Flushing</strong>
+                                <br />
+                                <strong>NY 11354</strong>
+                                <br />
+                                <strong>Phone:</strong> <a href="tel:7188863555">(718) 886-3555</a>
+                                <br />
+                                <strong>Fax:</strong> (718) 886-3553
+                                <br />
+                                <a href="mailto:info@theone-ny.com">info@theone-ny.com</a>
+                            </p>
+                        </div>
+                    
                     </div>
-                
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-4">
-                    <div class="footer-widget">
-                        <h3 class="footer-widget__title">
-                            spa castle new york
-                        </h3>
-                        <p class="footer-widget__content">
-                            131-10 11 Ave College Point, NY 11356
-                            <br />
-                            <a href="http://www.nyspacastle.com" target="_blank">www.nyspacastle.com</a>
-                        </p>
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                spa castle new york
+                            </h3>
+                            <p class="footer-widget__content">
+                                131-10 11 Ave College Point, NY 11356
+                                <br />
+                                <a href="http://www.nyspacastle.com" target="_blank">www.nyspacastle.com</a>
+                            </p>
 
+                        </div>
+                    
                     </div>
-                
                 </div>
             </div>
         </div>
