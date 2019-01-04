@@ -69,7 +69,7 @@ $activeNav = ' nav-link--active';
         </div>
     </header>
     <main class="home">
-        <section class="contact">
+        <section class="gallery">
             <div class="container">
                 <div class="row">
                     <h2 class="content-title">Gallery</h2>
