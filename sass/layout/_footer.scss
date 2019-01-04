@@ -1,8 +1,74 @@
 .footer{
 
-    padding: 100px 0 50px !important;
+    padding: 40px 0;
 
-    &--bg-white{
-        background-color: $color-white;
+    background-image: url('/img/footer_image.png');
+        border-top: 1px solid #D9D9D9;
+        box-shadow: 0px -2px 4px rgba(0,0,0,0.1);
+    
+        &-widget{
+    
+            &__title{
+                color: #333333;
+                font-size: 14px;
+                font-family: Arial, Arial, Helvetica, sans-serif;
+                font-weight: normal;
+                font-style: normal;
+                text-transform: uppercase;
+            }
+    
+            &__content{
+                line-height: 1.6em;
+                font-size: 13px;
+                color: #494949;
+            }
+        }
+}
+
+.sub-footer{
+    padding: 0 0 20px 0;
+    font-size: 12px;
+    background-color: #222222;
+    border-top: 1px dotted #D9D9D9;
+    position: relative;
+
+    .copy-right,
+    .hotel-policy{
+        padding-top: 20px;
+        color: #8F8F8F;
+        font-size: 12px !important;
+
+        a{
+            color: #8F8F8F;
+            font-size: 12px !important;
+        }
+    }
+}
+
+@media (max-width: 767px){
+
+    .footer{
+
+        &__container{
+            width: 420px;
+            margin: 0 auto;
+        }
+
+        &__widget{
+            margin: 1em 0;
+        }
+    }
+}
+
+@media (max-width: 500px){
+    .footer{
+        &__container{
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        &__widget{
+            margin: 1em 0;
+        }
     }
 }
