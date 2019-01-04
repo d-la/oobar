@@ -47,43 +47,101 @@
         background-color: #eeeeee;
     }
 
-    .navbar-nav{
-        .nav-item{
-            // border-left: 1px solid #FFF;
-            // border-right: 1px solid #FFF;
-            border-left: 1px solid #E6E6E6; 
+    .nav{
 
-            .nav-link{
-                color: #000;
-                font-size: 14px;
-                padding: 28px 14px 16px 14px;
-                border-top: 1px solid transparent;
-                text-decoration: none;
-                text-transform: uppercase;
-
-                span{
-                    font-size: 10px;
-                    display: block;
-                }
+        .navbar-toggler-icon{
+            i{
+                padding-top: 5px;
 
                 &:hover{
                     color: $theme-color-gold;
-                    background-color: #FFF;
-                    border-top-color: $theme-color-gold;
-
-                    transition: .2s all linear;
-                    -moz-transition: .2s all linear;
-                    -o-transition: .2s all linear;
-                    -ms-transition: .2s all linear;
-                    outline: 0 none;
+                    transition: .2 color linear;
                 }
+            }
+        }
 
-                &:last-of-type{
-                    border-right: 1px solid #E6E6E6;
+        .navbar-nav{
+            .nav-item{
+                // border-left: 1px solid #FFF;
+                // border-right: 1px solid #FFF;
+                border-left: 1px solid #E6E6E6; 
+    
+                .nav-link{
+                    color: #000;
+                    font-size: 14px;
+                    padding: 28px 14px 16px 14px;
+                    border-top: 1px solid transparent;
+                    text-decoration: none;
+                    text-transform: uppercase;
+    
+                    span{
+                        font-size: 10px;
+                        display: block;
+                    }
+    
+                    &:hover{
+                        color: $theme-color-gold;
+                        background-color: #FFF;
+                        border-top-color: $theme-color-gold;
+    
+                        transition: .2s all linear;
+                        -moz-transition: .2s all linear;
+                        -o-transition: .2s all linear;
+                        -ms-transition: .2s all linear;
+                        outline: 0 none;
+                    }
+    
+                    &:last-of-type{
+                        border-right: 1px solid #E6E6E6;
+                    }
+
+                    &--active{
+                        background-color: $theme-color-gold;
+                        color: #FFF;
+                        border-left-color: #FFF;
+                        border-right-color: #FFF;
+                    }
                 }
             }
         }
     }
+    // .navbar-nav{
+    //     .nav-item{
+    //         // border-left: 1px solid #FFF;
+    //         // border-right: 1px solid #FFF;
+    //         border-left: 1px solid #E6E6E6; 
+
+    //         .nav-link{
+    //             color: #000;
+    //             font-size: 14px;
+    //             padding: 28px 14px 16px 14px;
+    //             border-top: 1px solid transparent;
+    //             text-decoration: none;
+    //             text-transform: uppercase;
+
+    //             span{
+    //                 font-size: 10px;
+    //                 display: block;
+    //             }
+
+    //             &:hover{
+    //                 color: $theme-color-gold;
+    //                 background-color: #FFF;
+    //                 border-top-color: $theme-color-gold;
+
+    //                 transition: .2s all linear;
+    //                 -moz-transition: .2s all linear;
+    //                 -o-transition: .2s all linear;
+    //                 -ms-transition: .2s all linear;
+    //                 outline: 0 none;
+    //             }
+
+    //             &:last-of-type{
+    //                 border-right: 1px solid #E6E6E6;
+    //             }
+    //         }
+    //     }
+    // }
     
     .home{
         
@@ -119,49 +177,49 @@
         }
     }
     
-    .footer{
-        background-image: url('/img/footer_image.png');
-        border-top: 1px solid #D9D9D9;
-        box-shadow: 0px -2px 4px rgba(0,0,0,0.1);
+    // .footer{
+    //     background-image: url('/img/footer_image.png');
+    //     border-top: 1px solid #D9D9D9;
+    //     box-shadow: 0px -2px 4px rgba(0,0,0,0.1);
     
-        &-widget{
+    //     &-widget{
     
-            &__title{
-                color: #333333;
-                font-size: 14px;
-                font-family: Arial, Arial, Helvetica, sans-serif;
-                font-weight: normal;
-                font-style: normal;
-                text-transform: uppercase;
-            }
+    //         &__title{
+    //             color: #333333;
+    //             font-size: 14px;
+    //             font-family: Arial, Arial, Helvetica, sans-serif;
+    //             font-weight: normal;
+    //             font-style: normal;
+    //             text-transform: uppercase;
+    //         }
     
-            &__content{
-                line-height: 1.6em;
-                font-size: 13px;
-                color: #494949;
-            }
-        }
-    }
+    //         &__content{
+    //             line-height: 1.6em;
+    //             font-size: 13px;
+    //             color: #494949;
+    //         }
+    //     }
+    // }
     
-    .sub-footer{
-        padding: 0 0 20px 0;
-        font-size: 12px;
-        background-color: #222222;
-        border-top: 1px dotted #D9D9D9;
-        position: relative;
+    // .sub-footer{
+    //     padding: 0 0 20px 0;
+    //     font-size: 12px;
+    //     background-color: #222222;
+    //     border-top: 1px dotted #D9D9D9;
+    //     position: relative;
     
-        .copy-right,
-        .hotel-policy{
-            padding-top: 20px;
-            color: #8F8F8F;
-            font-size: 12px !important;
+    //     .copy-right,
+    //     .hotel-policy{
+    //         padding-top: 20px;
+    //         color: #8F8F8F;
+    //         font-size: 12px !important;
 
-            a{
-                color: #8F8F8F;
-                font-size: 12px !important;
-            }
-        }
-    }
+    //         a{
+    //             color: #8F8F8F;
+    //             font-size: 12px !important;
+    //         }
+    //     }
+    // }
     
 
 }
@@ -199,8 +257,44 @@
     left: -1em;
 }
 
+.contact{
+
+    &__title{
+        margin: 0 0 1em;
+    }
+}
+
 @media (max-width: 767px){
     #events-carousel{
         max-width: 25em;
     }
+
+    .hotel-policy{
+        text-align: left !important;
+    }
+
+    // .footer{
+
+    //     &__container{
+    //         width: 420px;
+    //         margin: 0 auto;
+    //     }
+
+    //     &__widget{
+    //         margin: 1em 0;
+    //     }
+    // }
 }
+
+// @media (max-width: 500px){
+//     .footer{
+//         &__container{
+//             width: 300px;
+//             margin: 0 auto;
+//         }
+
+//         &__widget{
+//             margin: 1em 0;
+//         }
+//     }
+// }
