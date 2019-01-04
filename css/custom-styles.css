@@ -389,6 +389,105 @@ p {
   display: none;
 }
 
+.oobar-new-design {
+  background-color: #494949;
+  font-size: 13px;
+}
+.oobar-new-design .logo-header {
+  position: relative;
+  width: 100%;
+  background-color: #FFF;
+  padding: 1em 0;
+}
+.oobar-new-design .header-container {
+  background-color: #eeeeee;
+}
+.oobar-new-design .navbar-nav .nav-item {
+  border-left: 1px solid #E6E6E6;
+}
+.oobar-new-design .navbar-nav .nav-item .nav-link {
+  color: #000;
+  font-size: 14px;
+  padding: 28px 14px 16px 14px;
+  border-top: 1px solid transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.oobar-new-design .navbar-nav .nav-item .nav-link span {
+  font-size: 10px;
+  display: block;
+}
+.oobar-new-design .navbar-nav .nav-item .nav-link:hover {
+  color: #CF9F4A;
+  background-color: #FFF;
+  border-top-color: #CF9F4A;
+  transition: 0.2s all linear;
+  -moz-transition: 0.2s all linear;
+  -o-transition: 0.2s all linear;
+  -ms-transition: 0.2s all linear;
+  outline: 0 none;
+}
+.oobar-new-design .navbar-nav .nav-item .nav-link:last-of-type {
+  border-right: 1px solid #E6E6E6;
+}
+.oobar-new-design .home {
+  padding: 3em 0;
+  background-color: #FFF;
+}
+.oobar-new-design .home__carousel {
+  margin-top: -3em;
+  max-width: 100em;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.oobar-new-design .home .about__title {
+  padding-bottom: 5px;
+}
+.oobar-new-design .home .events {
+  margin: 2em 0;
+}
+.oobar-new-design .home .events__title {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+.oobar-new-design .footer {
+  background-image: url("/img/footer_image.png");
+  border-top: 1px solid #D9D9D9;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+}
+.oobar-new-design .footer-widget__title {
+  color: #333333;
+  font-size: 14px;
+  font-family: Arial, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.oobar-new-design .footer-widget__content {
+  line-height: 1.6em;
+  font-size: 13px;
+  color: #494949;
+}
+.oobar-new-design .sub-footer {
+  padding: 0 0 20px 0;
+  font-size: 12px;
+  background-color: #222222;
+  border-top: 1px dotted #D9D9D9;
+  position: relative;
+}
+.oobar-new-design .sub-footer .copy-right,
+.oobar-new-design .sub-footer .hotel-policy {
+  padding-top: 20px;
+  color: #8F8F8F;
+  font-size: 12px !important;
+}
+.oobar-new-design .sub-footer .copy-right a,
+.oobar-new-design .sub-footer .hotel-policy a {
+  color: #8F8F8F;
+  font-size: 12px !important;
+}
+
 .input-error {
   display: none;
   font-size: 0.85em;
