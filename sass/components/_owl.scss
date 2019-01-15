@@ -1,0 +1,64 @@
+// Custom Owl Styling
+
+.owl{
+
+    &-item{
+        min-width: 20em;
+    }
+}
+
+.owl-prev,
+.owl-next{
+    position: absolute;
+}
+
+.owl-prev{
+    top: 50%;
+    left: -3em;
+    font-size: 25px !important;
+
+    &:hover{
+        background: transparent !important;
+        color: $theme-color-gold !important;
+        transition: .2s all linear;
+    }
+
+}
+
+.owl-next{
+    top: 50%;
+    right: -3em;
+    font-size: 25px !important;
+
+    &:hover{
+        background: transparent !important;
+        color: $theme-color-gold !important;
+        transition: .2s all linear;
+    }
+}
+
+.owl-dots{
+    margin-top: 10px;
+
+    .owl-dot{
+        span{
+            background: #000 !important;
+        }
+    }
+    
+    .owl-dot.active{
+        span{
+            background: $theme-color-gold !important;
+        }
+    }
+}
+
+@media (max-width: 1260px){
+    .owl-prev{
+        left: -1em;
+    }
+
+    .owl-next{
+        right: -1em;
+    }
+}

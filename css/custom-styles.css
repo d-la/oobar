@@ -264,6 +264,52 @@ p {
   min-width: 20em;
 }
 
+.owl-prev,
+.owl-next {
+  position: absolute;
+}
+
+.owl-prev {
+  top: 50%;
+  left: -3em;
+  font-size: 25px !important;
+}
+.owl-prev:hover {
+  background: transparent !important;
+  color: #CF9F4A !important;
+  transition: 0.2s all linear;
+}
+
+.owl-next {
+  top: 50%;
+  right: -3em;
+  font-size: 25px !important;
+}
+.owl-next:hover {
+  background: transparent !important;
+  color: #CF9F4A !important;
+  transition: 0.2s all linear;
+}
+
+.owl-dots {
+  margin-top: 10px;
+}
+.owl-dots .owl-dot span {
+  background: #000 !important;
+}
+.owl-dots .owl-dot.active span {
+  background: #CF9F4A !important;
+}
+
+@media (max-width: 1260px) {
+  .owl-prev {
+    left: -1em;
+  }
+
+  .owl-next {
+    right: -1em;
+  }
+}
 .work {
   position: relative;
   overflow: hidden;
@@ -434,6 +480,9 @@ p {
 .event-detail__container:hover {
   border-color: #CF9F4A;
 }
+.event-details-main {
+  background-color: #FFF;
+}
 
 #main-content {
   background-size: cover;
@@ -470,9 +519,6 @@ p {
 .oobar-new-design {
   background-color: #494949;
   font-size: 13px;
-}
-.oobar-new-design .w-100 {
-  height: 600px !important;
 }
 .oobar-new-design .logo-header {
   position: relative;
@@ -548,6 +594,9 @@ p {
 .oobar-new-design .gallery {
   padding: 2em;
 }
+.oobar-new-design .gallery__title {
+  margin: 0 0 1em;
+}
 
 .input-error {
   display: none;
@@ -595,6 +644,11 @@ p {
 
   .hotel-policy {
     text-align: left !important;
+  }
+}
+@media (min-width: 1100px) {
+  .w-100 {
+    height: 600px !important;
   }
 }
 
