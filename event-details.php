@@ -54,121 +54,151 @@ if (intval($eventId)){
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <link href="/assets/plugins/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/plugins/font-awesome/5.3/css/all.min.css" rel="stylesheet" />
-    <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet" />
-    <link href="/assets/css/one-page-parallax/style.min.css" rel="stylesheet" />
-    <link href="/assets/css/one-page-parallax/style-responsive.min.css" rel="stylesheet" />
-    <link href="/assets/css/one-page-parallax/theme/default.css" id="theme" rel="stylesheet" />
-    <!-- ================== END BASE CSS STYLE ================== -->
 
     <!-- Custom CSS -->
     <link href="/css/custom-styles.min.css" id="custom-styles" rel="stylesheet" />
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/assets/plugins/pace/pace.min.js"></script>
-    <!-- ================== END BASE JS ================== -->
 </head>
 
-<body data-spy="scroll" data-target="#header" data-offset="51">
-    <!-- begin #page-container -->
-    <div id="page-container" class="fade">
-        <!-- begin #header -->
-        <div id="header" class="header navbar navbar-default navbar-fixed-top">
-            <!-- begin container -->
-            <div class="container">
-                <!-- begin navbar-header -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="index.php" class="navbar-brand">
-                        <!-- <span class="brand-logo"></span> -->
-                        <span class="brand-text">
-                            <img src="/img/oobar_logo_small.jpg" alt="Oobar Logo" style="height: 70px !important; max-height: 70px !important;">
-                        </span>
+<body data-spy="scroll" data-target="#header" data-offset="51" class="oobar-new-design">
+    <section class="logo-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <a href="">
+                        <img src="/img/oobar_logo_small.jpg" alt="Oobar and lounge logo" height="120">
                     </a>
-                </div>
-                <!-- end navbar-header -->
-                <!-- begin navbar-collapse -->
-                <div class="collapse navbar-collapse" id="header-navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php#about">ABOUT</a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php#events">EVENTS</a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php#contact">CONTACT</a></li>
+                </div>  
+            </div>
+        </div>
+    </section>
+    <header class="header-container">
+        <div class="container">
+            <nav class="nav navbar-expand-lg">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> <i class="fa fa-bars"></i> </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link hover-theme-color<?= $activeNav; ?>" href="index2.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="gallery.php" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="contact.php" data-click="scroll-to-target">CONTACT <span>&nbsp;</span></a></li>
                     </ul>
                 </div>
-                <!-- end navbar-collapse -->
-            </div>
-            <!-- end container -->
+            </nav>
         </div>
-        <!-- end #header -->    
+    </header> 
 
-        <div class="row">
-            <div class="col-md-12">
-                <section class="event-detail">
-                    <div class="event-detail__container">
-                        <div class="event">
-                            <div class="event__banner">
-                                <img src="<?= $bannerPath; ?>" alt="banner image" class="event__image">
-                            </div>
-                            <h1 class="event__title">
-                                <?= $eventName ?>
-                            </h1>
-                            <p class="event__date-time">
-                                <?php echo $eventDate . ': ' . $eventTime; ?>
-                            </p>
-                            <p class="event__desc">
-                                <?= $eventDesc ?>
-                            </p>
-                            <?php 
-                            if (!empty($registrationUrl)){ ?>
-                            <div class="event__cta">
-                                <a href="<?= $registrationUrl ?>" class="btn btn-gold">Register here!</a>
-                            </div>
-                            <?php 
-                            }
-                            ?>
+    <div class="row event-details-main">
+        <div class="col-md-12">
+            <section class="event-detail">
+                <div class="event-detail__container">
+                    <div class="event">
+                        <div class="event__banner">
+                            <img src="<?= $bannerPath; ?>" alt="banner image" class="event__image">
                         </div>
+                        <h1 class="event__title">
+                            <?= $eventName ?>
+                        </h1>
+                        <p class="event__date-time">
+                            <?php echo $eventDate . ': ' . $eventTime; ?>
+                        </p>
+                        <p class="event__desc">
+                            <?= $eventDesc ?>
+                        </p>
+                        <?php 
+                        if (!empty($registrationUrl)){ ?>
+                        <div class="event__cta">
+                            <a href="<?= $registrationUrl ?>" class="btn btn-gold">Register here!</a>
+                        </div>
+                        <?php 
+                        }
+                        ?>
                     </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- begin #footer -->
-        <div id="footer" class="footer footer--bg-white">
-            <div class="container">
-                <div class="footer-brand">
-                    <!-- <div class="footer-brand-logo"></div> -->
-                    <img src="/img/oobar_logo_small.jpg" alt="Oobar Logo">
-                    
                 </div>
-                <p>
-                    &copy; Copyright 2017 Oobar
-                </p>
-                <p class="social-list">
-                    <a href="https://www.facebook.com/Oobarlounge/" class="theme-color theme-color--hover-blk"><i class="fab fa-facebook-f fa-fw"></i></a>
-                    <a href="https://www.instagram.com/oobarlounge/?hl=en" class="theme-color theme-color--hover-blk"><i class="fab fa-instagram fa-fw"></i></a>
-                    <a href="https://twitter.com/oobarlounge" class="theme-color theme-color--hover-blk"><i class="fab fa-twitter fa-fw"></i></a>
-                </p>
+            </section>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                hotel information
+                            </h3>
+                            <p class="footer-widget__content">
+                                <strong>Check-In: 3PM</strong>
+                                <br />
+                                <strong>Check-Out: 12PM</strong>
+                                <br />
+                                Non-Smoking
+                                <br />
+                                Street Parking
+                                <br />
+                                Pets not allowed!
+                            </p>
+                        
+                        </div>
+                    
+                    </div>
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                contact us
+                            </h3>
+                            <p class="footer-widget__content">
+                                <strong>137-72 Northern Blvd, Flushing</strong>
+                                <br />
+                                <strong>NY 11354</strong>
+                                <br />
+                                <strong>Phone:</strong> <a href="tel:7188863555">(718) 886-3555</a>
+                                <br />
+                                <strong>Fax:</strong> (718) 886-3553
+                                <br />
+                                <a href="mailto:info@theone-ny.com">info@theone-ny.com</a>
+                            </p>
+                        </div>
+                    
+                    </div>
+                    <div class="col-xs-12 col-md-4 col-lg-4">
+                        <div class="footer-widget">
+                            <h3 class="footer-widget__title">
+                                spa castle new york
+                            </h3>
+                            <p class="footer-widget__content">
+                                131-10 11 Ave College Point, NY 11356
+                                <br />
+                                <a href="http://www.nyspacastle.com" target="_blank">www.nyspacastle.com</a>
+                            </p>
+
+                        </div>
+                    
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- end #footer -->
+    </footer>
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-xs-12">
+                    <p class="copy-right">&copy; Spa Castle Inc. 2013-2019. All rights reserved. Any redistribution or reproduction of part or all of the contents in any form is prohibited. </p>
+                </div>
+                <div class="col-lg-6 col-xs-12 text-right">
+                    <p class="hotel-policy"><a href="http://theone-ny.com/hotel-policy/">Hotel Policy</a></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- end #page-container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="/assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <!--[if lt IE 9]>
-		<script src="/assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/assets/crossbrowserjs/excanvas.min.js"></script>
-	<![endif]-->
-    <script src="/assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/assets/plugins/scrollMonitor/scrollMonitor.js"></script>
-    <script src="/assets/plugins/paroller/jquery.paroller.min.js"></script>
-    <script src="/assets/js/one-page-parallax/apps.min.js"></script>
-    <!-- ================== END BASE JS ================== -->
 
     <script>
         $(document).ready(function () {

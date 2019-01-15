@@ -59,9 +59,9 @@ $activeNav = ' nav-link--active';
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index2.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index2.php#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
-                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index2.php#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="index.php#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="gallery.php" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color<?= $activeNav; ?>" href="contact.php" data-click="scroll-to-target">CONTACT <span>&nbsp;</span></a></li>
                     </ul>
