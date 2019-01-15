@@ -83,7 +83,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link hover-theme-color<?= $activeNav; ?>" href="index2.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color<?= $activeNav; ?>" href="index.php" data-click="scroll-to-target">HOME <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="gallery.php" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
