@@ -11,7 +11,7 @@ if (intval($eventId)){
             $eventName = $row['event_name'];
             $eventDesc = $row['event_desc'];
             $eventDate = date('M d, Y', strtotime($row['event_date']));
-            $eventTime = date('h:i a', strtotime($row['start_time'])) . ' ' . date('h:i a', strtotime($row['end_time']));
+            $eventTime = date('h:i a', strtotime($row['start_time'])) . ' - ' . date('h:i a', strtotime($row['end_time']));
             $bannerPath = $row['banner_path'];
 
             if (empty($bannerPath)){
