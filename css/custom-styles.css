@@ -338,6 +338,27 @@ p {
   transition: all 0.2s linear;
 }
 
+.social {
+  position: relative;
+  margin: 1em;
+  text-align: right;
+}
+.social .fab {
+  margin: 0 0.5em;
+}
+.social .facebook {
+  color: #4267b2;
+}
+.social .facebook:hover {
+  color: #3B5998;
+}
+.social .twitter {
+  color: #38A1F3;
+}
+.social .twitter:hover {
+  color: #4099FF;
+}
+
 @supports (display: flex) {
   .flex {
     display: flex;
