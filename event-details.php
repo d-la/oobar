@@ -21,6 +21,9 @@ if (intval($eventId)){
         }
     }
 }
+
+$fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -99,6 +102,14 @@ if (intval($eventId)){
                         <div class="event__banner">
                             <img src="<?= $bannerPath; ?>" alt="banner image" class="event__image">
                         </div>
+                        <div class="social">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $fullUrl; ?>" target="_blank">
+                                <i class="fab fa-facebook-square facebook fa-2x"></i>
+                            </a>
+                            <a href="http://twitter.com/share?url=<?= $fullUrl; ?>">
+                                <i class="fab fa-twitter twitter fa-2x"></i>
+                            </a>
+                        </div>
                         <h1 class="event__title">
                             <?= $eventName ?>
                         </h1>
@@ -122,89 +133,10 @@ if (intval($eventId)){
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-md-4 col-lg-4">
-                        <div class="footer-widget">
-                            <h3 class="footer-widget__title">
-                                hotel information
-                            </h3>
-                            <p class="footer-widget__content">
-                                <strong>Check-In: 3PM</strong>
-                                <br />
-                                <strong>Check-Out: 12PM</strong>
-                                <br />
-                                Non-Smoking
-                                <br />
-                                Street Parking
-                                <br />
-                                Pets not allowed!
-                            </p>
-                        
-                        </div>
-                    
-                    </div>
-                    <div class="col-xs-12 col-md-4 col-lg-4">
-                        <div class="footer-widget">
-                            <h3 class="footer-widget__title">
-                                contact us
-                            </h3>
-                            <p class="footer-widget__content">
-                                <strong>137-72 Northern Blvd, Flushing</strong>
-                                <br />
-                                <strong>NY 11354</strong>
-                                <br />
-                                <strong>Phone:</strong> <a href="tel:7188863555">(718) 886-3555</a>
-                                <br />
-                                <strong>Fax:</strong> (718) 886-3553
-                                <br />
-                                <a href="mailto:info@theone-ny.com">info@theone-ny.com</a>
-                            </p>
-                        </div>
-                    
-                    </div>
-                    <div class="col-xs-12 col-md-4 col-lg-4">
-                        <div class="footer-widget">
-                            <h3 class="footer-widget__title">
-                                spa castle new york
-                            </h3>
-                            <p class="footer-widget__content">
-                                131-10 11 Ave College Point, NY 11356
-                                <br />
-                                <a href="http://www.nyspacastle.com" target="_blank">www.nyspacastle.com</a>
-                            </p>
+    <?php require_once 'footer.php'; ?>
 
-                        </div>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <div class="sub-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-xs-12">
-                    <p class="copy-right">&copy; Spa Castle Inc. 2013-2019. All rights reserved. Any redistribution or reproduction of part or all of the contents in any form is prohibited. </p>
-                </div>
-                <div class="col-lg-6 col-xs-12 text-right">
-                    <p class="hotel-policy"><a href="http://theone-ny.com/hotel-policy/">Hotel Policy</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="/assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            App.init();
-        });
-    </script>
 </body>
 
 </html>

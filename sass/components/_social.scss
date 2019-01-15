@@ -1,0 +1,26 @@
+
+.social{
+    position: relative;
+    margin: 1em;
+    text-align: right;
+
+    .fab{
+        margin: 0 .5em;
+    }
+
+    .facebook{
+        color: $color-facebook;
+
+        &:hover{
+            color: $color-hover-facebook;
+        }
+    }
+
+    .twitter{
+        color: $color-twitter;
+
+        &:hover{
+            color: $color-hover-twitter;
+        }
+    }
+}
