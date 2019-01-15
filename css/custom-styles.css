@@ -238,6 +238,7 @@ p {
 .event__desc {
   position: relative;
   padding: 0 2em;
+  text-align: center;
 }
 .event__date-time {
   position: relative;
