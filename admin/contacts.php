@@ -62,19 +62,29 @@ $mysqli = initializeMysqlConnection();
                                 <?php 
                                 $sqlQuery = 'SELECT * FROM contact_submissions;';
                                 $rs = $mysqli->query($sqlQuery);
-                                $count = 0;
+                                $contactSubmissionCount = 0;
                                 if ($rs->num_rows > 0){
                                     while ($row = $rs->fetch_assoc()){
-                                        echo '<tr>';
-                                        echo '<td>' . htmlentities($row['first_name']) . ' ' . htmlentities($row['last_name']) . '</td>';
-                                        echo '<td>' . $row['email'] . '</td>';
-                                        echo '<td>' . htmlentities($row['phone_number']) . '</td>';
-                                        echo '<td>' . date('M d Y, h:i', strtotime($row['contact_date'])) . '</td>';
-                                        echo '<td>' . htmlentities($row['message']) . '</td>';
-                                        echo '</tr>';
-                                        $count++;
+
+                                        ?>
+                                        <tr>
+                                            <td><?= htmlentities($row['first_name']) ?> <?= htmlentities($row['last_name']) ?></td>
+                                            <td><?= $row['email'] ?></td>
+                                            <td><?= htmlentities($row['phone_number']) ?></td>
+                                            <td><?= date('M d Y, h:i', strtotime($row['contact_date'])) ?></td>
+                                            <td><?= htmlentities($row['message']) ?></td>
+                                        </tr>
+
+                                        <?php
+                                        $contactSubmissionCount++;
                                     }   
-                                }  
+                                } else {
+                                    ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center">No contact submissions!</td>
+                                    </tr>
+                                    <?php
+                                }
                                 ?>
 
                                 </table>
@@ -89,7 +99,7 @@ $mysqli = initializeMysqlConnection();
                         </div>
                         <div class="widget-chart-sidebar bg-black-darker">
                             <div class="chart-number">
-                                <?= $count ?>
+                                <?= $contactSubmissionCount ?>
                             </div>
                         </div>
                     </div>
@@ -99,8 +109,7 @@ $mysqli = initializeMysqlConnection();
             <!-- end row -->
 
         <!-- begin scroll to top btn -->
-        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
-                class="fa fa-angle-up"></i></a>
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         <!-- end scroll to top btn -->
     </div>
     <!-- end page container -->
@@ -120,21 +129,10 @@ $mysqli = initializeMysqlConnection();
     <script src="/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/admin/admin_assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/admin_assets/plugins/nvd3/build/nv.d3.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="/admin/admin_assets/plugins/gritter/js/jquery.gritter.js"></script>
-    <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
-            DashboardV2.init();
             $('#contacts').DataTable();
         });
     </script>
