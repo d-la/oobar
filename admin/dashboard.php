@@ -145,7 +145,7 @@ $mysqli = initializeMysqlConnection();
                                 } else {
                                     ?>
                                     <tr>
-                                        <td colspan="6" class="text-center">No events found!</td>
+                                        <td colspan="6" class="text-center">No upcoming events!</td>
                                     </tr>
                                     <?php
                                 }
