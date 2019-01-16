@@ -115,15 +115,6 @@ $todaysDate = date('m/d/y');
                                             }   
 
                                             $mysqli->next_result();
-
-                                            ?>
-                                        <?php
-                                        } else {
-                                            ?>
-                                            <tr>
-                                                <td colspan="6">No upcoming events!</td>
-                                            </tr>
-                                            <?php
                                         }
                                         ?>
                                     </tbody>
@@ -315,7 +306,7 @@ $todaysDate = date('m/d/y');
     <script>
         $(document).ready(function () {
             App.init();
-            
+
             $('#datepicker-default').datepicker({
                 format: 'mm/dd/yyyy'
             });
