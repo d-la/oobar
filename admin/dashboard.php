@@ -62,21 +62,30 @@ $mysqli = initializeMysqlConnection();
                                         <?php 
                                         $sqlQuery = 'SELECT * FROM contact_submissions ORDER BY contact_date DESC;';
                                         $rs = $mysqli->query($sqlQuery);
-                                        $count = 0;
+
                                         if ($rs->num_rows > 0){
                                             while ($row = $rs->fetch_assoc()){
-                                                echo '<tr>';
-                                                echo '<td>' . htmlentities($row['first_name']) . ' ' . htmlentities($row['last_name']) . '</td>';
-                                                echo '<td>' . $row['email'] . '</td>';
-                                                echo '<td>' . htmlentities($row['phone_number']) . '</td>';
-                                                echo '<td>' . date('M d Y, h:i', strtotime($row['contact_date'])) . '</td>';
-                                                echo '<td>' . htmlentities($row['message']) . '</td>';
-                                                echo '</tr>';
-                                                $count++;
-                                            }   
+                                                ?>
+
+                                                <tr>
+                                                    <td><?= htmlentities($row['first_name']); ?> <?= htmlentities($row['last_name']); ?></td>
+                                                    <td><?= $row['email'] ;?></td>
+                                                    <td><?= htmlentities($row['phone_number']); ?></td>
+                                                    <td><?= date('M d Y, h:i', strtotime($row['contact_date'])); ?></td>
+                                                    <td><?= htmlentities($row['message']); ?></td>
+                                                </tr>
+
+                                                <?php
+                                            }
                                                 
                                                 $mysqli->next_result();
-                                            }
+                                        } else {
+                                            ?>
+                                            <tr>
+                                                <td colspan="5">No contact submissions to display!</td>
+                                            </tr>
+                                            <?php
+                                        }
                                         
                                         
                                         ?>
@@ -86,8 +95,8 @@ $mysqli = initializeMysqlConnection();
                         </div>
                     </div>
                 </div>
-                <!-- end col-8 -->
-                <!-- begin col-4 -->
+                <!-- end col-6 -->
+                <!-- begin col-6 -->
                 <div class="col-lg-6">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
@@ -106,24 +115,39 @@ $mysqli = initializeMysqlConnection();
                                     <th>End Time</th>
                                     <th>Edit</th>
                                 </thead>
-                                <?php 
+                                <?php
+                                // This should be moved into a stored procedure 
                                 $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC;';
                                 $rs = $mysqli->query($sqlQuery);
 
-                                $count = 0;
+                                $upcomingEventCount = 0;
                                 if ($rs->num_rows > 0){
                                     while ($row = $rs->fetch_assoc()){
-                                        echo '<tr>';
-                                        echo '<td>' . htmlentities($row['event_name']) . '</td>';
-                                        echo '<td>' . htmlentities($row['event_desc']) . '</td>';
-                                        echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
-                                        echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                        echo '<td>' . date('h:i a', strtotime($row['end_time'])) . '</td>';
-                                        echo '<td><a href="editevent.php?id=' . $row['id'] . '" class="edit-button"><i class="fa fa-cogs"></i></a></td>';
-                                        echo '</tr>';
-                                        $count++;
+                                        ?>
+                                        <tr>
+                                            <td><?= htmlentities($row['event_name']) ?></td>
+                                            <td><?= htmlentities($row['event_desc']) ?></td>
+                                            <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
+                                            <td><?= date('h:i a', strtotime($row['start_time'])) ?></td>
+                                            <td><?= date('h:i a', strtotime($row['end_time'])) ?></td>
+                                            <td><a href="editevent.php?id=<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
+                                        </tr>
+
+                                        <?php
+                                        $upcomingEventCount++;
                                     }   
                                     $mysqli->next_result();
+                                    ?>
+                                    <tr>
+                                        <td colspan="6">Number of upcoming events: <?= $upcomingEventCount; ?></td>
+                                    </tr>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center">No events found!</td>
+                                    </tr>
+                                    <?php
                                 }
                                 ?>
                                 </table>
@@ -131,15 +155,14 @@ $mysqli = initializeMysqlConnection();
                         </div>
                     </div>
                 </div>
-                <!-- end col-4 -->
+                <!-- end col-6 -->
             </div>
             <!-- end row -->
         </div>
         <!-- end #content -->
 
         <!-- begin scroll to top btn -->
-        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
-                class="fa fa-angle-up"></i></a>
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
         <!-- end scroll to top btn -->
     </div>
     <!-- end page container -->
@@ -159,21 +182,10 @@ $mysqli = initializeMysqlConnection();
     <script src="/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/admin/admin_assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/admin_assets/plugins/nvd3/build/nv.d3.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="/admin/admin_assets/plugins/gritter/js/jquery.gritter.js"></script>
-    <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
-            DashboardV2.init();
             $('#contacts').DataTable();
         });
     </script>
