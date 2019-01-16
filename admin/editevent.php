@@ -90,7 +90,8 @@ $mysqli = initializeMysqlConnection();
                                 while ($row = $rs->fetch_assoc()){
                                     $eventName = htmlentities($row['event_name']);
                                     $eventDesc = htmlentities($row['event_desc']);
-                                    $eventDate = date('m/d/y', strtotime($row['event_date']));
+                                    $eventDate = date('m/d/Y', strtotime($row['event_date']));
+                                    // $eventDate = $row['event_date'];
                                     $startTime = date('h:i A', strtotime($row['start_time']));
                                     $endTime = date('h:i A', strtotime($row['end_time']));
                                 }   
@@ -113,7 +114,7 @@ $mysqli = initializeMysqlConnection();
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Event Date</label>
 									<div class="col-md-9">
-										<input type="text" name="eventDate" class="form-control" id="datepicker-default" value="<?= $eventDate; ?>" />
+										<input type="text" name="eventDate" class="form-control" id="datepicker-default" data-event-date="<?= $eventDate ?>" />
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
@@ -190,44 +191,25 @@ $mysqli = initializeMysqlConnection();
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/admin/admin_assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/admin_assets/plugins/nvd3/build/nv.d3.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="/admin/admin_assets/plugins/gritter/js/jquery.gritter.js"></script>
-    <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
-
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 	<script src="/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 	<script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/password-indicator/js/password-indicator.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/select2/dist/js/select2.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-show-password/bootstrap-show-password.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
-	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
-	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
-            DashboardV2.init();
-            FormPlugins.init();
+
+            let datePickerInput = $('#datepicker-default');
+
+            $(datePickerInput).datepicker({
+                format: 'mm/dd/yyyy'
+            });
+
+            $(datePickerInput).datepicker('update', $(datePickerInput).data('event-date'));
         });
     </script>
 </body>
