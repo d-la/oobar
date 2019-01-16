@@ -174,45 +174,10 @@ $todaysDate = date('m/d/y');
     <script src="/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/admin/admin_assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/admin_assets/plugins/nvd3/build/nv.d3.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="/admin/admin_assets/plugins/gritter/js/jquery.gritter.js"></script>
-    <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
-
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/password-indicator/js/password-indicator.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/select2/dist/js/select2.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-show-password/bootstrap-show-password.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
-	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
-	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
-            DashboardV2.init();
-            FormPlugins.init();
             $('#gallery').DataTable();
         });
     </script>
