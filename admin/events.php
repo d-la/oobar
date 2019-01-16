@@ -74,8 +74,8 @@ $todaysDate = date('m/d/y');
 						
 						unset($_SESSION['alert']);
 					}
-                    ?>
-                <div class="col-lg-8">
+                ?>
+                <div class="col-lg-7">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -95,35 +95,46 @@ $todaysDate = date('m/d/y');
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        $sqlQuery = 'SELECT * FROM events';
+                                        $sqlQuery = 'SELECT * FROM events WHERE event_date >= CURDATE() ORDER BY event_date ASC';
                                         $rs = $mysqli->query($sqlQuery);
-                                        $count = 0;
+                                        $upcomingEventCount = 0;
                                         if ($rs->num_rows > 0){
                                             while ($row = $rs->fetch_assoc()){
-                                                echo '<tr>';
-                                                echo '<td>' . htmlentities($row['event_name']) . '</td>';
-                                                echo '<td>' . htmlentities($row['event_desc']) . '</td>';
-                                                echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
-                                                echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                                echo '<td>' . date('h:i a', strtotime($row['end_time'])) . '</td>';
-                                                echo '<td><a href="editevent.php?id=' . $row['id'] . '" class="edit-button"><i class="fa fa-cogs"></i></a></td>';
-                                                echo '</tr>';
-                                                $count++;
+                                                ?>  
+                                                <tr>
+                                                    <td><?= htmlentities($row['event_name']) ?></td>
+                                                    <td><?= htmlentities($row['event_desc']) ?></td>
+                                                    <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
+                                                    <td><?= date('h:i a', strtotime($row['start_time'])) ?></td>
+                                                    <td><?= date('h:i a', strtotime($row['end_time'])) ?></td>
+                                                    <td><a href="editevent.php?id=<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
+                                                </tr>
+
+                                                <?php
+                                                $upcomingEventCount++;
                                             }   
 
                                             $mysqli->next_result();
+
+                                            ?>
+                                        <?php
+                                        } else {
+                                            ?>
+                                            <tr>
+                                                <td colspan="6">No upcoming events!</td>
+                                            </tr>
+                                            <?php
                                         }
                                         ?>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end col-8 -->
+                            </div> <!-- end .table-responsive --> 
+                        </div> <!-- end .panel-body -->
+                    </div> <!-- end .panel -->
+                </div> <!-- end .col-lg-8 -->
 
-                <!-- begin col-4 -->
-                <div class="col-lg-4">
+                <!-- begin .col-lg-4 -->
+                <div class="col-lg-5">
                     <?php 
                     if (isset($_SESSION['alert'])){
 
@@ -158,7 +169,7 @@ $todaysDate = date('m/d/y');
                                 <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Event Date</label>
 									<div class="col-md-9">
-										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" value="<?= $todaysDate; ?>" required="required" />
+										<input type="text" name="eventDate" class="form-control" id="datepicker-default" placeholder="Select Date" required="required" />
 									</div>
                                 </div>
                                 <div class="form-group row m-b-15">
@@ -204,12 +215,10 @@ $todaysDate = date('m/d/y');
 									<button type="submit" class="btn btn-default">Submit</button>
 								</div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- end col-4 -->
-            </div>
-            <!-- end row -->
+                        </div> <!-- end .panel-body -->
+                    </div> <!-- end .panel -->
+                </div> <!-- end .col-lg-4 -->
+            </div> <!-- end .row -->
 
             <div class="row">
                 <!-- begin col-8 -->
@@ -234,15 +243,24 @@ $todaysDate = date('m/d/y');
                                     $allEventCount = 0;
                                     if ($rs->num_rows > 0){
                                         while ($row = $rs->fetch_assoc()){
-                                            echo '<tr>';
-                                            echo '<td>' . htmlentities($row['event_name']) . '</td>';
-                                            echo '<td>' . htmlentities($row['event_desc']) . '</td>';
-                                            echo '<td>' . date('M d, Y', strtotime($row['event_date'])) . '</td>';
-                                            echo '<td>' . date('h:i a', strtotime($row['start_time'])) . '</td>';
-                                            echo '<td>' . date('h:i a', strtotime($row['end_time'])) . '</td>';
-                                            echo '</tr>';
+                                            ?>
+
+                                            <tr>
+                                                <td><?= htmlentities($row['event_name']) ?></td>
+                                                <td><?= htmlentities($row['event_desc']) ?></td>
+                                                <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
+                                                <td><?= date('h:i a', strtotime($row['start_time'])) ?></td>
+                                                <td><?= date('h:i a', strtotime($row['end_time'])) ?></td>
+                                            </tr>
+                                            <?php
                                             $allEventCount++;
                                         }   
+                                    } else {
+                                        ?>
+                                        <tr>
+                                            <td colspan="5">No events found</td>
+                                        </tr>
+                                        <?php
                                     }
                                     ?>
 
@@ -286,44 +304,22 @@ $todaysDate = date('m/d/y');
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-    <script src="/admin/admin_assets/plugins/d3/d3.min.js"></script>
-    <script src="/admin/admin_assets/plugins/nvd3/build/nv.d3.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-    <script src="/admin/admin_assets/plugins/gritter/js/jquery.gritter.js"></script>
-    <script src="/admin/admin_assets/js/demo/dashboard-v2.min.js"></script>
-    <!-- ================== END PAGE LEVEL JS ================== -->
-
-    <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 	<script src="/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 	<script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/password-indicator/js/password-indicator.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-tag-it/js/tag-it.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/select2/dist/js/select2.min.js"></script>
 	<script src="/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-show-password/bootstrap-show-password.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-	<script src="/admin/admin_assets/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
-	<script src="/admin/admin_assets/plugins/clipboard/clipboard.min.js"></script>
-	<script src="/admin/admin_assets/js/demo/form-plugins.demo.min.js"></script>
-	<!-- ================== END PAGE LEVEL JS ================== -->
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>
         $(document).ready(function () {
             App.init();
-            DashboardV2.init();
-            FormPlugins.init();
+            
+            $('#datepicker-default').datepicker({
+                format: 'mm/dd/yyyy'
+            });
+
             $('#upcoming-events').DataTable();
         });
     </script>
