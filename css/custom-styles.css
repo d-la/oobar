@@ -416,7 +416,8 @@ p {
 .open-image__container {
   position: relative;
   margin: 7.5% auto 20%;
-  width: 80%;
+  max-width: 60em;
+  width: 90%;
   padding: 1em;
   text-align: center;
 }
@@ -434,15 +435,41 @@ p {
   cursor: pointer;
 }
 .open-image__container .button-left {
-  left: 10%;
+  left: 0;
 }
 .open-image__container .button-right {
-  right: 10%;
+  right: 0;
 }
 .open-image__container img {
-  max-width: 100%;
+  max-width: 53.846em;
+  width: 100%;
+}
+.open-image__close-container {
+  position: absolute;
+  top: -1em;
+  right: 1em;
+}
+.open-image__close-button {
+  font-size: 2em;
+  color: #FFF;
+}
+.open-image__close-button:hover {
+  color: #CF9F4A;
+  transition: 0.2s all linear;
+  cursor: pointer;
 }
 
+@media (max-width: 870px) {
+  .open-image__container .button-right {
+    right: -0.45em;
+  }
+  .open-image__container .button-left {
+    left: -0.45em;
+  }
+  .open-image__close-container {
+    right: -1em;
+  }
+}
 @supports (display: flex) {
   .flex {
     display: flex;
