@@ -39,7 +39,7 @@ $activeNav = ' nav-link--active';
 
 </head>
 
-<body data-spy="scroll" data-target="#header" data-offset="51" class="oobar-new-design">
+<body class="oobar-new-design">
     <section class="logo-header">
         <div class="container">
             <div class="row">

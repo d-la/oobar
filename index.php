@@ -41,7 +41,7 @@ $activeNav = ' nav-link--active';
     <link rel="stylesheet" href="/include/owl/owl.theme.default.min.css">
 </head>
 
-<body data-spy="scroll" data-target="#header" data-offset="51" class="oobar-new-design">
+<body class="oobar-new-design">
     <section class="logo-header">
         <div class="container">
             <div class="row">
@@ -163,7 +163,7 @@ $activeNav = ' nav-link--active';
                                 <?php
                                     $rs->close();
                                 } else { ?>
-                                    <p class="content-desc text-center">
+                                    <p class="desc text-center">
                                         No upcoming events! Contact us if you'd like to book an event.
                                     </p>
                                     <?php 
