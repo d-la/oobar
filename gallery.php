@@ -38,7 +38,7 @@ $activeNav = ' nav-link--active';
 
 </head>
 
-<body data-spy="scroll" data-target="#header" data-offset="51" class="oobar-new-design">
+<body class="oobar-new-design">
     <section class="logo-header">
         <div class="container">
             <div class="row">
@@ -102,9 +102,11 @@ $activeNav = ' nav-link--active';
                                     <!-- begin col-3 -->
                                     <div class="col-md-3 col-sm-6">
                                         <!-- begin work -->
-                                        <div class="work" data-click="show-gallery-image" data-position="<?= $count; ?>"> 
+                                        <div class="work"> 
                                             <div class="image">
-                                                <a href="<?= $path ?>" target="_blank"><img src="<?= $path ?>" alt="<?= $title ?>" /></a>
+                                                <!-- <a href="<?= $path ?>" target="_blank"> -->
+                                                <img src="<?= $path ?>" alt="<?= $title ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
+                                                <!-- </a> -->
                                             </div>
                                             <div class="desc">
                                                 <span class="desc-title"><?= $title; ?></span>
@@ -132,11 +134,36 @@ $activeNav = ' nav-link--active';
         </section>
     </main>
     
+    <div class="open-image">
+        <div class="open-image__container">
+            <div class="open-image__close-container">
+                <span class="open-image__close-button">&times;</span>
+            </div>
+
+            <div class="button-left">
+                <i class="fas fa-angle-left"></i>
+            </div> 
+
+            <img src="" alt="">
+
+            <div class="button-right">
+                <i class="fas fa-angle-right"></i>
+            </div>
+        </div>
+    </div>
+
     <?php require_once 'footer.php'; ?>
 
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="/assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/handle-gallery-modal.js"></script>
+    <script>    
+        // If theres more than 1 gallery image, initialize the modal 
+        if ($('img[data-click="show-gallery-image"]').length > 1){
+            let galleryImagesHandler = new galleryImageModal();
+        }
+    </script>
 </body>
 
 </html>
