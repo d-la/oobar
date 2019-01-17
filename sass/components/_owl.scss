@@ -5,50 +5,49 @@
     &-item{
         min-width: 20em;
     }
-}
 
-.owl-prev,
-.owl-next{
-    position: absolute;
-}
-
-.owl-prev{
-    top: 50%;
-    left: -3em;
-    font-size: 25px !important;
-
-    &:hover{
-        background: transparent !important;
-        color: $theme-color-gold !important;
-        transition: .2s all linear;
+    &-next,
+    &-prev{
+        position: absolute;
     }
 
-}
+    &-prev{
+        top: 50%;
+        left: -3em;
+        font-size: 25px !important;
 
-.owl-next{
-    top: 50%;
-    right: -3em;
-    font-size: 25px !important;
-
-    &:hover{
-        background: transparent !important;
-        color: $theme-color-gold !important;
-        transition: .2s all linear;
-    }
-}
-
-.owl-dots{
-    margin-top: 10px;
-
-    .owl-dot{
-        span{
-            background: #000 !important;
+        &:hover{
+            background: transparent !important;
+            color: $theme-color-gold !important;
+            transition: .2s all linear;
         }
     }
-    
-    .owl-dot.active{
-        span{
-            background: $theme-color-gold !important;
+
+    &-next{
+        top: 50%;
+        right: -3em;
+        font-size: 25px !important;
+
+        &:hover{
+            background: transparent !important;
+            color: $theme-color-gold !important;
+            transition: .2s all linear;
+        }
+    }
+
+    &-dots{
+        margin-top: 10px;
+
+        .owl-dot{
+            span{
+                background: #000 !important;
+            }
+        }
+        
+        .owl-dot.active{
+            span{
+                background: $theme-color-gold !important;
+            }
         }
     }
 }
@@ -60,5 +59,16 @@
 
     .owl-next{
         right: -1em;
+    }
+}
+
+// Galaxy S5/Iphone5 and lower
+@media (max-width: 380px){
+    .owl-prev{
+        left: -17px;
+    }
+
+    .owl-next{
+        right: -17px;
     }
 }
