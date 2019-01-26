@@ -21,7 +21,7 @@ $registrationLink = $_POST['registrationLink'];
 $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
 // Generate random file name since we're storing on our server and not an external instance
-$randomFileName = 'event_banner_' . rand(0, 10000) . $fileExtension;
+$randomFileName = 'event_banner_' . rand(0, 10000) . '.' . strtolower($fileExtension);
 
 // Full directory to upload
 $directoryToUpload = $_SERVER['DOCUMENT_ROOT'] . '/img/events/banners/';
