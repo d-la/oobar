@@ -20,7 +20,7 @@ if (isset($_POST['delete'])){
         $_SESSION['alert'] = 'error';
     }
 
-    header('Location: /admin/events.php');
+    header('Location: /admin/events');
     die();
 
 } else if (isset($_POST['update'])){
@@ -82,7 +82,7 @@ if (isset($_POST['delete'])){
         $_SESSION['alert'] = 'error';
     }
 
-    header('Location: /admin/editevent.php?id=' . $eventId);
+    header('Location: /admin/editevent/' . $eventId);
     die();
 }
 ?>
