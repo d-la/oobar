@@ -95,7 +95,7 @@ $todaysDate = date('m/d/y');
                                     <label class="col-form-label col-md-3">Banner Image</label>
                                     <div class="col-md-9">
                                         <div class="">
-                                            <input name="galleryImage" type="file" class="form-control" accept="image/png, image/jpeg, image/jpg" />
+                                            <input name="galleryImage[]" type="file" class="form-control" accept="image/png, image/jpeg, image/jpg" multiple="multiple" />
                                         </div>
                                     </div>
                                 </div>
