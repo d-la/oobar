@@ -3,7 +3,10 @@ css/custom-styles.min.css.map
 
 # Template Assets
 assets/
-admin/admin_assets
+/views/admin/admin_assets
 
 # MySQL Connection File
 include/mysqlconn.php
+
+# Images
+img/*
