@@ -117,7 +117,8 @@ $activeNav = ' nav-link--active';
                         <form id="contact-submission" action="controllers/contact-submission.php" method="POST" class="form-horizontal">
                             <div id="firstName" class="form-group row m-b-15">
                                 <div class="col-md-9">
-                                    <input type="text" name="name" class="form-control" />
+                                    <label for="privacy">By checking the checkbox, you agree to allowing us to use your information</label>
+                                    <input type="checkbox" name="privacy" class="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row m-b-15">
@@ -169,7 +170,7 @@ $activeNav = ' nav-link--active';
 
     <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="/assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="/js/app.min.js"></script>
 </body>
 
 </html>

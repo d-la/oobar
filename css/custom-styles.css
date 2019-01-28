@@ -617,7 +617,8 @@ p {
 }
 
 #firstName {
-  display: none;
+  position: absolute;
+  top: -1000px;
 }
 
 .oobar-new-design {

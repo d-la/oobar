@@ -8,36 +8,42 @@ $(document).ready(function(){
     });
     
     let handleContactFormSubmission = function(){
-        let submitButton = $('button[type="submit"]');
+        const submitButton = $('button[type="submit"]');
+        const privacyCheckbox = $('input[name="privacy"]');
 
-        let contactData = {
-            firstName: $('input[name="firstName"]').val(),
-            lastName: $('input[name="lastName"').val(),
-            email: $('input[type="email"]').val(),
-            phoneNumber: $('input[name="phoneNumber"]').val(),
-            message: $('textarea[name="message"]').val()
-        };
-
-        $.ajax({
-            url: '/controllers/contact-submission.php',
-            type: 'POST',
-            data: contactData
-        }).done( response => {
-            let parsedResponse = JSON.parse(response);
-
-            if (parsedResponse.response == true){
-                $(submitButton).removeClass('btn-theme').addClass('btn-green').text('Message Sent!');
-            } else {
-                $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
-            }
-
-            clearFormValues();
-            // Should this event happen? Does UX suffer? 
-            // setTimeout(setSubmitButtonToDefault, 3000);
-
-        }).fail( (response) => {
-            $(submitButton).removeClass('btn-theme').addClass('btn-danger').text('Error sending message!');
-        });
+        if ($(privacyCheckbox).is(':checked')){
+            // Do nothing
+        } else {
+            const contactData = {
+                firstName: $('input[name="firstName"]').val(),
+                lastName: $('input[name="lastName"]').val(),
+                email: $('input[type="email"]').val(),
+                phoneNumber: $('input[name="phoneNumber"]').val(),
+                message: $('textarea[name="message"]').val()
+            };
+    
+            $.ajax({
+                url: '/controllers/contact-submission.php',
+                type: 'POST',
+                data: contactData
+            }).done( (response) => {
+                let parsedResponse = JSON.parse(response);  
+                console.log(parsedResponse);
+    
+                if (parsedResponse.response == true){
+                    $(submitButton).removeClass('btn-gold').addClass('btn-success').text('Message Sent!');
+                } else {
+                    $(submitButton).removeClass('btn-gold').addClass('btn-danger').text('Error sending message!');
+                }
+    
+                clearFormValues();
+                // Should this event happen? Does UX suffer? 
+                // setTimeout(setSubmitButtonToDefault, 3000);
+    
+            }).fail( (response) => {
+                $(submitButton).removeClass('btn-gold').addClass('btn-danger').text('Error sending message!');
+            });
+        }
     };
 
     let clearFormValues = () => {
