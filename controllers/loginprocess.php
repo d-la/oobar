@@ -26,16 +26,16 @@ if ($validateEmail !== false){
         $_SESSION['firstName'] = $firstName;
         $_SESSION['lastName'] = $lastName;
 
-        header('Location: /admin/dashboard.php');
+        header('Location: /admin/dashboard');
         die();
     } else {
         $_SESSION['alert'] = 'error';
-        header('Location: /login.php');
+        header('Location: /login');
         die();
     }
 } else {
     $_SESSION['alert'] = 'error';
-    header('Location: /login.php');
+    header('Location: /login');
     die();
 }
 
