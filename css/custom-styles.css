@@ -695,4 +695,9 @@ p {
   margin: 0 0 1em;
 }
 
+.not-found {
+  height: 25em;
+  display: block;
+}
+
 /*# sourceMappingURL=custom-styles.css.map */
