@@ -36,7 +36,7 @@ if ($totalImageCount > 0){
             if (file_exists($directoryToUploadWithFileName)){
                 $_SESSION['img_name'] = true;
                 $_SESSION['alert'] = 'error';
-                header('Location: /admin/gallery.php');
+                header('Location: /admin/gallery');
                 die();
             } else if (!file_exists($directoryToUploadWithFileName)) {
                 // Perform upload
@@ -62,7 +62,7 @@ if ($totalImageCount > 0){
     }
 }
 
-header('Location: /admin/gallery.php');
+header('Location: /admin/gallery');
 die();
 
 ?>

@@ -68,11 +68,11 @@ $result = $mysqli->query($sqlQuery);
 
 if ($result == true){
     $_SESSION['alert'] = 'success';
-    header('Location: /admin/events.php');
+    header('Location: /admin/events');
     die();
 } else {
     $_SESSION['alert'] = 'error';
-    header('Location: /admin/events.php');
+    header('Location: /admin/events');
     die();
 }
 
