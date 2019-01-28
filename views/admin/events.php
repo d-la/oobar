@@ -38,7 +38,7 @@ $todaysDate = date('m/d/y');
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                 <li class="breadcrumb-item active">Events</li>
             </ol>
             <!-- end breadcrumb -->
@@ -58,6 +58,9 @@ $todaysDate = date('m/d/y');
                         }
 
                         unset($_SESSION['action']);
+                    } else {    
+                        $errorMessage = 'Unable to add event!';
+                        $successMessage = 'Event added successfully!';
                     }
 
                     // Determine if the user entered an incorrect email/password combo
@@ -67,7 +70,6 @@ $todaysDate = date('m/d/y');
 							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
 							echo $alertBanner->getAlertBannerHtml();
 						} else if ($_SESSION['alert'] == 'success'){
-                            $successMessage = 'Event added successfully!';
                             $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
 							echo $alertBanner->getAlertBannerHtml();
                         }
@@ -107,7 +109,7 @@ $todaysDate = date('m/d/y');
                                                     <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
                                                     <td><?= date('h:i a', strtotime($row['start_time'])) ?></td>
                                                     <td><?= date('h:i a', strtotime($row['end_time'])) ?></td>
-                                                    <td><a href="editevent.php?id=<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
+                                                    <td><a href="/admin/editevent/<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
                                                 </tr>
 
                                                 <?php
@@ -280,27 +282,27 @@ $todaysDate = date('m/d/y');
     <!-- end page container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!--[if lt IE 9]>
-		<script src="/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
-    <script src="/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/admin/admin_assets/js/theme/default.min.js"></script>
-    <script src="/admin/admin_assets/js/apps.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="/views/admin/admin_assets/js/theme/default.min.js"></script>
+    <script src="/views/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/views/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>

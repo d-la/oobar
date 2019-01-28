@@ -38,7 +38,7 @@ $todaysDate = date('m/d/y');
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                 <li class="breadcrumb-item active">Gallery</li>
             </ol>
             <!-- end breadcrumb -->
@@ -47,9 +47,7 @@ $todaysDate = date('m/d/y');
             <!-- end page-header -->
             <!-- begin row -->
             <div class="row">
-                <!-- begin col-8 -->
-                <div class="col-lg-8">
-                    <?php 
+                <?php 
 					if (isset($_SESSION['alert'])){
 
 						if ($_SESSION['alert'] == 'error'){
@@ -60,17 +58,24 @@ $todaysDate = date('m/d/y');
                             } else {
                                 $errorMessage = 'Unable to upload gallery image!';
                             }
-
 							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
 							echo $alertBanner->getAlertBannerHtml();
 						} else if ($_SESSION['alert'] == 'success'){
-                            $alertBanner = new AlertBanner($_SESSION['alert'], 'Gallery image uploaded successfully!');
+
+                            if ($_SESSION['galleryController'] == 'delete'){
+                                $successMessage = 'Gallery image deleted successfully!';
+                            } else {
+                                $successMessage = 'Gallery image uploaded successfully!';
+                            }
+                            $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
 							echo $alertBanner->getAlertBannerHtml();
                         }
 						
 						unset($_SESSION['alert']);
 					}
                     ?>
+                <!-- begin col-8 -->
+                <div class="col-lg-8">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -122,7 +127,6 @@ $todaysDate = date('m/d/y');
                                             <th>Image Name</th>
                                             <th>Image Desc</th>
                                             <th>Edit</th>
-                                            <th>Delete</th>
                                         </thead>
                                         <tbody>
                                             <?php 
@@ -135,8 +139,7 @@ $todaysDate = date('m/d/y');
                                                     echo '<tr>';
                                                     echo '<td>' . $row['name'] . '</td>';
                                                     echo '<td>' . $row['description'] . '</td>';
-                                                    echo '<td><a href="javascript:;" data-gallery-id="' . $row['id'] . '" data-click="edit"><i class="fa fa-cogs"></i></a>';
-                                                    echo '<td><a href="javascript:;" data-gallery-id="' . $row['id'] . '" data-click="delete"><i class="fa fa-ban"></i></a>';
+                                                    echo '<td><a href="/admin/editgallery/' . $row['id'] . '" data-gallery-id="' . $row['id'] . '" data-click="edit"><i class="fa fa-cogs"></i></a>';
                                                 }
                                             }
                                             ?>
@@ -160,18 +163,18 @@ $todaysDate = date('m/d/y');
     <!-- end page container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!--[if lt IE 9]>
-		<script src="/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
-    <script src="/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/admin/admin_assets/js/theme/default.min.js"></script>
-    <script src="/admin/admin_assets/js/apps.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="/views/admin/admin_assets/js/theme/default.min.js"></script>
+    <script src="/views/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>

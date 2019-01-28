@@ -130,7 +130,7 @@ $mysqli = initializeMysqlConnection();
                                             <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
                                             <td><?= date('h:i a', strtotime($row['start_time'])) ?></td>
                                             <td><?= date('h:i a', strtotime($row['end_time'])) ?></td>
-                                            <td><a href="editevent.php?id=<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
+                                            <td><a href="/admin/editevent/<?= $row['id'] ?>" class="edit-button"><i class="fa fa-cogs"></i></a></td>
                                         </tr>
 
                                         <?php
@@ -168,18 +168,18 @@ $mysqli = initializeMysqlConnection();
     <!-- end page container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!--[if lt IE 9]>
-		<script src="/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
-    <script src="/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/admin/admin_assets/js/theme/default.min.js"></script>
-    <script src="/admin/admin_assets/js/apps.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="/views/admin/admin_assets/js/theme/default.min.js"></script>
+    <script src="/views/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>

@@ -5,11 +5,7 @@ $requestedPath = explode('/', $requestUri);
 $classActive = '<li class="active">';
 $notActive = '<li>';
 if (!empty($requestedPath[2])){
-    if (strpos($requestedPath[2], '.php') !== false){
-        $positionOfDotPhp = strpos($requestedPath[2], '.php');
-
-        $currentPage = ucwords(substr($requestedPath[2], 0, $positionOfDotPhp));
-    }
+    $currentPage = $requestedPath[2];
 }
 
 ?>
@@ -24,7 +20,7 @@ if (!empty($requestedPath[2])){
                 <a href="javascript:;" data-toggle="nav-profile">
                     <div class="cover with-shadow"></div>
                     <div class="image">
-                        <img src="/admin/admin_assets/img/user/user-13.jpg" alt="" />
+                        <img src="/views/admin/admin_assets/img/user/user-13.jpg" alt="" />
                     </div>
                     <div class="info">
                         <b class="caret pull-right"></b>
@@ -34,7 +30,7 @@ if (!empty($requestedPath[2])){
             </li>
             <li>
                 <ul class="nav nav-profile">
-                    <li><a href="settings.php"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
                 </ul>
             </li>
         </ul>
@@ -43,49 +39,49 @@ if (!empty($requestedPath[2])){
         <ul class="nav">
             <li class="nav-header">Navigation</li>
             <?php 
-            if ($currentPage == 'Dashboard'){
+            if ($currentPage == 'dashboard'){
                 echo $classActive;
             } else {
                 echo $notActive;
             }
             ?>
-                <a href="dashboard.php">
+                <a href="/admin/dashboard">
                     <i class="fa fa-th-large"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <?php 
-            if ($currentPage == 'Contacts'){
+            if ($currentPage == 'contacts'){
                 echo $classActive;
             } else {
                 echo $notActive;
             }
             ?>
-                <a href="contacts.php">
+                <a href="/admin/contacts">
                     <i class="fa fa-list-ol"></i>
                     <span>Contact Submissions</span>
                 </a>
             </li>
             <?php 
-            if ($currentPage == 'Events'){
+            if ($currentPage == 'events'){
                 echo $classActive;
             } else {
                 echo $notActive;
             }
             ?>
-                <a href="events.php">
+                <a href="/admin/events">
                     <i class="fa fa-calendar"></i> 
                     <span>Events</span>
                 </a>
             </li>
             <?php 
-            if ($currentPage == 'Gallery'){
+            if ($currentPage == 'gallery'){
                 echo $classActive;
             } else {
                 echo $notActive;
             }
             ?>
-                <a href="gallery.php">
+                <a href="/admin/gallery">
                     <i class="fa fa-image"></i> 
                     <span>Gallery</span>
                 </a>

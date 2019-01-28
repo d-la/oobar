@@ -4,6 +4,34 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
 $mysqli = initializeMysqlConnection();
+
+$eventId = -1;
+if (isset($_SERVER['REQUEST_URI'])){
+
+    $requestUriArray = explode('/', $_SERVER['REQUEST_URI']);
+
+    $eventId = filter_var($requestUriArray[3], FILTER_VALIDATE_INT);
+
+    if ($eventId !== false){
+        $sqlQuery = "SELECT * FROM events WHERE id = $eventId;";
+        $rs = $mysqli->query($sqlQuery);
+        $count = 0;
+        if ($rs->num_rows > 0){
+            while ($row = $rs->fetch_assoc()){
+                $eventName = htmlentities($row['event_name']);
+                $eventDesc = htmlentities($row['event_desc']);
+                $eventDate = date('m/d/Y', strtotime($row['event_date']));
+                // $eventDate = $row['event_date'];
+                $startTime = date('h:i A', strtotime($row['start_time']));
+                $endTime = date('h:i A', strtotime($row['end_time']));
+                $bannerPath = $row['banner_path'];
+            }   
+        }
+    } else {
+        header('Location: /admin/dashboard');
+        die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -33,9 +61,9 @@ $mysqli = initializeMysqlConnection();
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/events">Events</a></li>
+                <li class="breadcrumb-item active">Edit Event</li>
             </ol>
             <!-- end breadcrumb -->
             <!-- begin page-header -->
@@ -43,9 +71,7 @@ $mysqli = initializeMysqlConnection();
             <!-- end page-header -->
             <!-- begin row -->
             <div class="row">
-                <!-- begin col-12 -->
-                <div class="col-lg-12">
-                    <?php 
+                <?php 
                     $successMessage = '';
                     $errorMessage = '';
                     if (isset($_SESSION['action'])){
@@ -71,32 +97,15 @@ $mysqli = initializeMysqlConnection();
 						unset($_SESSION['alert']);
 					}
                     ?>
+                <!-- begin col-12 -->
+                <div class="col-lg-12">
                     <div class="panel panel-inverse" data-sortable-id="index-1">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                Edit/Update the event
+                                Edit/Delete the event
                             </h4>
                         </div>
                         <div class="panel-body">
-                            <?php 
-                            $eventId = -1;
-                            if (isset($_GET['id'])){
-                                $eventId = filter_var($_GET['id'], FILTER_VALIDATE_INT);
-                            }
-                            $sqlQuery = "SELECT * FROM events WHERE id = $eventId;";
-                            $rs = $mysqli->query($sqlQuery);
-                            $count = 0;
-                            if ($rs->num_rows > 0){
-                                while ($row = $rs->fetch_assoc()){
-                                    $eventName = htmlentities($row['event_name']);
-                                    $eventDesc = htmlentities($row['event_desc']);
-                                    $eventDate = date('m/d/Y', strtotime($row['event_date']));
-                                    // $eventDate = $row['event_date'];
-                                    $startTime = date('h:i A', strtotime($row['start_time']));
-                                    $endTime = date('h:i A', strtotime($row['end_time']));
-                                }   
-                            }
-                            ?>
                             <form action="/controllers/update-event.php" method="post" id="add-event">
                                 <input type="hidden" value="<?= $eventId ?>" name="eventId">
                                 <div class="form-group row m-b-15">
@@ -147,6 +156,13 @@ $mysqli = initializeMysqlConnection();
                                 </div>
 
                                 <div class="form-group row m-b-15">
+                                    <label class="col-form-label col-md-3">Current Banner Image:</label>
+                                    <div class="col-md-9">
+                                        <img class="rounded mx-auto d-block" src="<?= $bannerPath ?>" alt="Gallery Image to be edited" height="auto" width="auto" style="max-width: 100%;">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row m-b-15">
 									<label class="col-form-label col-md-3">Registration Link</label>
 									<div class="col-md-9">
 										<div>
@@ -176,27 +192,27 @@ $mysqli = initializeMysqlConnection();
     <!-- end page container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!--[if lt IE 9]>
-		<script src="/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
-    <script src="/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/admin/admin_assets/js/theme/default.min.js"></script>
-    <script src="/admin/admin_assets/js/apps.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="/views/admin/admin_assets/js/theme/default.min.js"></script>
+    <script src="/views/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
-	<script src="/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/views/admin/admin_assets/plugins/masked-input/masked-input.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-daterangepicker/moment.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="/views/admin/admin_assets/plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
     <script>

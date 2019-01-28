@@ -32,7 +32,7 @@ $mysqli = initializeMysqlConnection();
         <div id="content" class="content">
             <!-- begin breadcrumb -->
             <ol class="breadcrumb pull-right">
-                <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                 <li class="breadcrumb-item active">Contact Submissions</li>
             </ol>
             <!-- end breadcrumb -->
@@ -115,18 +115,18 @@ $mysqli = initializeMysqlConnection();
     <!-- end page container -->
 
     <!-- ================== BEGIN BASE JS ================== -->
-    <script src="/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
-    <script src="/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <!--[if lt IE 9]>
-		<script src="/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
-		<script src="/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/html5shiv.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/respond.min.js"></script>
+		<script src="/views/admin/admin_assets/crossbrowserjs/excanvas.min.js"></script>
 	<![endif]-->
-    <script src="/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
-    <script src="/admin/admin_assets/js/theme/default.min.js"></script>
-    <script src="/admin/admin_assets/js/apps.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/views/admin/admin_assets/plugins/js-cookie/js.cookie.js"></script>
+    <script src="/views/admin/admin_assets/js/theme/default.min.js"></script>
+    <script src="/views/admin/admin_assets/js/apps.min.js"></script>
     <!-- ================== END BASE JS ================== -->
 
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
