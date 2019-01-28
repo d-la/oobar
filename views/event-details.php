@@ -2,26 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
 $mysqli = initializeMysqlConnection();
 
-// $eventId = $_GET['eventid'];
-// if (intval($eventId)){
-//     $sqlQuery = 'SELECT * FROM events WHERE id = ' . $eventId;
-//     $rs = $mysqli->query($sqlQuery);
-//     if ($rs->num_rows > 0){
-//         while ($row = $rs->fetch_assoc()){
-//             $eventName = $row['event_name'];
-//             $eventDesc = $row['event_desc'];
-//             $eventDate = date('M d, Y', strtotime($row['event_date']));
-//             $eventTime = date('h:i a', strtotime($row['start_time'])) . ' - ' . date('h:i a', strtotime($row['end_time']));
-//             $bannerPath = $row['banner_path'];
-
-//             if (empty($bannerPath)){
-//                 $bannerPath = '/img/banner.jpg';
-//             }
-//             $registrationUrl = $row['registration_url'];
-//         }
-//     }
-// }
-
 $requestUri = explode('/', $_SERVER['REQUEST_URI']);
 
 $eventId = $requestUri[2];
@@ -74,7 +54,7 @@ $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "
     <meta content="" name="author" />
     <meta property="og:title" content="<?= $eventName ?>" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://oobarloungeny.com/eventdetails/<?= $eventId ?>" />
+    <meta property="og:url" content="http://oobarloungeny.com/event-details/<?= $eventId ?>" />
     <meta property="og:image" content="http://oobarloungeny.com<?= $bannerPath ?>" />
 
     <link rel="shortcut icon" type="image/png" href="/img/the_one_favicon1.png"/>
