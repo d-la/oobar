@@ -48,16 +48,18 @@ $todaysDate = date('m/d/y');
             <!-- begin row -->
             <div class="row">
                 <?php 
+                    // Check if the alert session variable is assigned so we can show the proper UI based on the controller's actions
 					if (isset($_SESSION['alert'])){
 
 						if ($_SESSION['alert'] == 'error'){
-                            $errorMessage = '';
+                            $errorMessage = 'Unable to upload gallery image!';
+                            // $errorMessage = '';
 
-                            if ($_SESSION['image_name'] == true){
-                                $errorMessage = 'Image already exists, please upload with a new name!';
-                            } else {
-                                $errorMessage = 'Unable to upload gallery image!';
-                            }
+                            // if ($_SESSION['img_name'] == true){
+                            //     $errorMessage = 'Image already exists, please upload with a new name!';
+                            // } else {
+                            //     $errorMessage = 'Unable to upload gallery image!';
+                            // }
 							$alertBanner = new AlertBanner($_SESSION['alert'], $errorMessage);
 							echo $alertBanner->getAlertBannerHtml();
 						} else if ($_SESSION['alert'] == 'success'){
@@ -69,6 +71,18 @@ $todaysDate = date('m/d/y');
                             }
                             $alertBanner = new AlertBanner($_SESSION['alert'], $successMessage);
 							echo $alertBanner->getAlertBannerHtml();
+                        } else if ($_SESSION['alert'] == 'warning'){\
+                            error_log('We in the code block that handles existing images on the UI');
+                            $warningMessage = 'The following uploaded files already exist on our server. Please rename them and try uploading again! ';
+                            foreach ($_SESSION['existingGalleryImageFiles'] as $key => $value){
+                                $warningMessage .= $value . ', ';
+                            }
+                            $warningMessage = substr($warningMessage, 0, strlen($warningMessage) - 2);
+
+                            $alertBanner = new AlertBanner($_SESSION['alert'], $warningMessage);
+                            echo $alertBanner->getAlertBannerHtml();
+                            
+                            unset($_SESSION['existingGalleryImageFiles']);
                         }
 						
 						unset($_SESSION['alert']);
