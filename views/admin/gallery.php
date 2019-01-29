@@ -1,5 +1,6 @@
 <?php 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+// require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/Gallery.php'; 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/sessionstart.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/include/validate-user.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/models/AlertBanner.php';
@@ -143,18 +144,15 @@ $todaysDate = date('m/d/y');
                                             <th>Edit</th>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                            $mysqli = initializeMysqlConnection();
-                                            $sqlQuery = 'SELECT id, name, description, path FROM gallery_images;';
-
-                                            $rs = $mysqli->query($sqlQuery);
-                                            if ($rs->num_rows > 0){
-                                                while ($row = $rs->fetch_assoc()){
-                                                    echo '<tr>';
-                                                    echo '<td>' . $row['name'] . '</td>';
-                                                    echo '<td>' . $row['description'] . '</td>';
-                                                    echo '<td><a href="/admin/editgallery/' . $row['id'] . '" data-gallery-id="' . $row['id'] . '" data-click="edit"><i class="fa fa-cogs"></i></a>';
-                                                }
+                                            <?php
+                                            $gallery = new Gallery();
+                                            
+                                            $allGalleryImages = $gallery->selectAllGalleryImages();
+                                            foreach ($allGalleryImages as $image){
+                                                echo '<tr>';
+                                                echo '<td>' . $image['name'] . '</td>';
+                                                echo '<td>' . $image['description'] . '</td>';
+                                                echo '<td><a href="/admin/editgallery/' . $image['id'] . '" data-gallery-id="' . $image['id'] . '" data-click="edit"><i class="fa fa-cogs"></i></a>';
                                             }
                                             ?>
                                         </tbody>
