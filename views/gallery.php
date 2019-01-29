@@ -1,6 +1,5 @@
 <?php 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/include/mysqlconn.php'; 
-$mysqli = initializeMysqlConnection();
+require_once $_SERVER['DOCUMENT_ROOT'] . '/models/Gallery.php';
 
 $activeNav = ' nav-link--active';
 ?>
@@ -77,11 +76,11 @@ $activeNav = ' nav-link--active';
                     </div>
                     
                         <?php
-                        $sqlQuery = 'SELECT id, name, description, path FROM gallery_images;';
-                        $resultSet = $mysqli->query($sqlQuery);
-                        $numRows = $resultSet->num_rows;
+                        $gallery = new Gallery();
+                        $allImages = $gallery->selectAllGalleryImages();
+                        $totalImageCount = count($allImages);
 
-                        if ($numRows == 0){
+                        if ($totalImageCount == 0){
                         ?>
                         <p class="content-desc text-center">
                             No photos available!
@@ -93,36 +92,29 @@ $activeNav = ' nav-link--active';
                         <div class="row row-space-10">
                             <?php
                             $count = 0;
-                            if ($resultSet->num_rows > 0){
-                                while ($row = $resultSet->fetch_assoc()){
-                                    $title = $row['name'];
-                                    $description = $row['description'];
-                                    $path = $row['path'];
-                                    ?>
-                                    <!-- begin col-3 -->
-                                    <div class="col-md-3 col-sm-6">
-                                        <!-- begin work -->
-                                        <div class="work"> 
-                                            <div class="image">
-                                                <!-- <a href="<?= $path ?>" target="_blank"> -->
-                                                <img src="<?= $path ?>" alt="<?= $title ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
-                                                <!-- </a> -->
-                                            </div>
-                                            <div class="desc">
-                                                <span class="desc-title"><?= $title; ?></span>
-                                                <!-- <span class="desc-text">Lorem ipsum dolor sit amet</span> -->
-                                            </div>
+                            foreach ($allImages as $image){
+                                ?>
+                                <!-- begin col-3 -->
+                                <div class="col-md-3 col-sm-6">
+                                    <!-- begin work -->
+                                    <div class="work"> 
+                                        <div class="image">
+                                            <!-- <a href="<?= $image['path'] ?>" target="_blank"> -->
+                                            <img src="<?= $image['path'] ?>" alt="<?= $image['title'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
+                                            <!-- </a> -->
                                         </div>
-                                        <!-- end work -->
+                                        <div class="desc">
+                                            <span class="desc-title"><?= $image['title']; ?></span>
+                                            <!-- <span class="desc-text">Lorem ipsum dolor sit amet</span> -->
+                                        </div>
                                     </div>
-                                    <!-- end col-3 -->
+                                    <!-- end work -->
+                                </div>
+                                <!-- end col-3 -->
 
-                                    <?php
-                                    // Keep track of each photo's position
-                                    $count++;
-                                }
-
-                                $resultSet->close();
+                                 <?php
+                                // Keep track of each photo's position
+                                $count++;
                             }
                             ?>
                         </div>
