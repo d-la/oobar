@@ -67,7 +67,7 @@ class Gallery{
      * @return string
      */
     public function returnImageExtension($imageName){
-        return pathinfo($imageName, PATH_EXTENSION);
+        return pathinfo($imageName, PATHINFO_EXTENSION);
     }
 
     /**
