@@ -99,13 +99,10 @@ $activeNav = ' nav-link--active';
                                     <!-- begin work -->
                                     <div class="work"> 
                                         <div class="image">
-                                            <!-- <a href="<?= $image['path'] ?>" target="_blank"> -->
                                             <img class="lazy" src="/img/blurred_image.jpg" data-src="<?= $image['path'] ?>" alt="<?= $image['name'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
-                                            <!-- </a> -->
                                         </div>
                                         <div class="desc">
                                             <span class="desc-title"><?= $image['name']; ?></span>
-                                            <!-- <span class="desc-text">Lorem ipsum dolor sit amet</span> -->
                                         </div>
                                     </div>
                                     <!-- end work -->
