@@ -48,24 +48,27 @@ class Email{
 
         $body = [
             'Messages' => [
-                'From' => [
-                    'Email' => $this->senderEmail,
-                    'Name' => 'Oo Bar and Lounge Support'
-                ],
-                'To' => [
-                    [
-                        'Email' => $this->emailRecipient,
-                        'Name' => 'Huy Le'
-                    ]
-                ],
-                'Subject' => 'New contact form submission',
-                'TextPart' => "You have 1 new contact form submission from $contactFormName ($contactFormEmail) ($contactFormPhoneNumber). Message: $contactFormMessage"
+                [
+                    'From' => [
+                        'Email' => $this->senderEmail,
+                        'Name' => 'Oo Bar and Lounge Support'
+                    ],
+                    'To' => [
+                        [
+                            'Email' => $this->emailRecipient,
+                            'Name' => 'Huy Le'
+                        ]
+                    ],
+                    'Subject' => "New contact form submission'",
+                    'TextPart' => "You have 1 new contact form submission from $contactFormName ($contactFormEmail) ($contactFormPhoneNumber). Message: $contactFormMessage",
+                    'HTMLPart' => "<p>You have 1 new contact form submission from $contactFormName ($contactFormEmail) ($contactFormPhoneNumber). Message: $contactFormMessage</p>"
+                ]
             ]
         ];
 
         $response = $mailJet->post(Resources::$Email, ['body' => $body]);
 
-        return $response;
+        return $response->getData();
     }
 
 }
