@@ -35,7 +35,14 @@ class Email{
         }
     }
 
-    public function contactFormSubmissionAlert($contactFormName, $contactFormEmail, $contactFormMessage, $contactFormTimestamp){
+    /**
+     * Send an alert when a new contact form submission is recieved
+     * 
+     * @param string
+     * @param string
+     * @param string 
+     */
+    public function contactFormSubmissionAlert($contactFormName, $contactFormEmail, $contactFormPhoneNumber, $contactFormMessage){
 
         $mailJet = new \Mailjet\Client($this->mailJetPublicKey, $this->mailJetPrivateKey, true, ['version' => 'v3.1']);
 
@@ -43,7 +50,7 @@ class Email{
             'Messages' => [
                 'From' => [
                     'Email' => $this->senderEmail,
-                    'NMame' => 'Oo Bar and Lounge Support'
+                    'Name' => 'Oo Bar and Lounge Support'
                 ],
                 'To' => [
                     [
@@ -52,9 +59,13 @@ class Email{
                     ]
                 ],
                 'Subject' => 'New contact form submission',
-                'TextPart' => 'You have 1 new contact form submission from ...'
+                'TextPart' => "You have 1 new contact form submission from $contactFormName ($contactFormEmail) ($contactFormPhoneNumber). Message: $contactFormMessage"
             ]
         ];
+
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+
+        return $response;
     }
 
 }
