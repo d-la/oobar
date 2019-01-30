@@ -63,7 +63,7 @@ class Email{
             ]
         ];
 
-        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        $response = $mailJet->post(Resources::$Email, ['body' => $body]);
 
         return $response;
     }
