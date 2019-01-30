@@ -100,7 +100,7 @@ $activeNav = ' nav-link--active';
                                     <div class="work"> 
                                         <div class="image">
                                             <!-- <a href="<?= $image['path'] ?>" target="_blank"> -->
-                                            <img src="<?= $image['path'] ?>" alt="<?= $image['name'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
+                                            <img class="lazy" src="/img/blurred_image.jpg" data-src="<?= $image['path'] ?>" alt="<?= $image['name'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
                                             <!-- </a> -->
                                         </div>
                                         <div class="desc">
@@ -150,11 +150,15 @@ $activeNav = ' nav-link--active';
     <script src="/assets/plugins/jquery/jquery-3.3.1.min.js"></script>
     <script src="/assets/plugins/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="/js/handle-gallery-modal.js"></script>
-    <script>    
+    <script src="/include/js/yall/yall-2.2.1.min.js"></script>
+    <script>
         // If theres more than 1 gallery image, initialize the modal 
         if ($('img[data-click="show-gallery-image"]').length > 1){
             let galleryImagesHandler = new galleryImageModal();
         }
+
+        // Initiate lazy loading using yall
+        document.addEventListener("DOMContentLoaded", yall);
     </script>
 </body>
 
