@@ -15,10 +15,10 @@ $result = $contactSubmission->insertNewContactSubmission();
 
 $emailClient = new Email();
 $contactFullName = $firstName . ' ' . $lastName;
-$emailClient->contactFormSubmissionAlert($contactFullName, $email, $phoneNumber, $message);
+$emailResponse = $emailClient->contactFormSubmissionAlert($contactFullName, $email, $phoneNumber, $message);
 
 if ($result){
-    echo json_encode(array('response' => true));
+    echo json_encode(array('response' => true, 'emailResponse' => $emailResponse->messages->status));
 } else {
     echo json_encode(array('response' => false));
 }
