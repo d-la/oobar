@@ -18,7 +18,7 @@ $contactFullName = $firstName . ' ' . $lastName;
 $emailResponse = $emailClient->contactFormSubmissionAlert($contactFullName, $email, $phoneNumber, $message);
 
 if ($result){
-    echo json_encode(array('response' => true, 'emailResponse' => $emailResponse->messages->status));
+    echo json_encode(array('response' => true, 'emailResponse' => $emailResponse['Messages'][0]['status']));
 } else {
     echo json_encode(array('response' => false));
 }
