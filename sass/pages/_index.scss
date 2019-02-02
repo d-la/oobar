@@ -37,7 +37,8 @@
         }
     
         .about{
-            color: $color-white;
+            // color: $color-white;
+            color: $theme-color-gold;
 
             &__title{
                 padding-bottom: 5px;
@@ -45,7 +46,8 @@
         }
 
         .events{
-            color: $color-white;
+            // color: $color-white;
+            color: $theme-color-gold;
             margin: 2em 0;
             
             &__title{

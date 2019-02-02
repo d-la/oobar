@@ -11,7 +11,8 @@
     &__left-arrow,
     &__right-arrow{
         flex: 1;
-        color: #FFF;
+        // color: #FFF;
+        color: $theme-color-gold;
         text-align: center;
         font-size: 3em;
 

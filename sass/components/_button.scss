@@ -20,17 +20,19 @@
     padding: .5em 4em;
     text-align: center;
     // border: 1px solid #222222;
-    border: 1px solid $color-white;
+    // border: 1px solid $color-white;
+    border: 1px solid $theme-color-gold;
     border-radius: 4px;
     margin: 1em 0;
     text-decoration: none;
     // color: #000;
-    color: $color-white;
+    // color: $color-white;
+    color: $theme-color-gold;
 
     &:hover{
         opacity: .9;
         text-decoration: none;
         color: $theme-color-gold;
-        border-color: $theme-color-gold;
+        border-color: $theme-color-light-gold;
     }
 }

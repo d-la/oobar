@@ -4,10 +4,11 @@
     min-height: 25em;
     width: 100%;
     // border: 1px solid #000;
-    border: 1px solid #FFF;
+    // border: 1px solid #FFF;
+    border: 1px solid $theme-color-gold;
 
     &:hover{
-        border-color: $theme-color-gold;
+        border-color: $theme-color-light-gold;
     }
 
     &__banner{
@@ -32,7 +33,8 @@
         text-align: center;
         margin: .75em 0;
         font-size: 1.5em;
-        color: $color-white;
+        // color: $color-white;
+        color: $theme-color-gold;
     }
 
     &__date{
@@ -41,7 +43,8 @@
         padding: 0 .75em;
         text-align: center;
         // color: #393f44;
-        color: $color-white;
+        // color: $color-white;
+        color: $theme-color-gold;
 
         font-size: 1em;
         margin: 0;
@@ -53,7 +56,8 @@
         padding: 0 .75em;
         text-align: center;
         // color: #4f5459;
-        color: $color-white;
+        // color: $color-white;
+        color: $theme-color-gold;
 
         font-size: .9em;
         margin: 0;
