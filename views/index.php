@@ -147,7 +147,7 @@ $activeNav = ' nav-link--active';
                                                         <img src="<?= $bannerPath ?>" width="100%" height="100%" alt="banner image">
                                                     </div>
                                                     <div class="card-custom__title">
-                                                        <h2 class="card-custom__header"><?= $row['event_name'] ?></h2>
+                                                        <h2 class="card-custom__header"><?= stripslashes($row['event_name']) ?></h2>
                                                     </div>
                                                     <div class="card-custom__info">
                                                         <p class="card-custom__date"><?= date('M d, Y', strtotime($row['event_date'])); ?></p>
