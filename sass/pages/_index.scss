@@ -1,7 +1,7 @@
 // Honeypot form input
 #firstName{
     position: absolute;
-    top: -1000px;
+    top: -2000px; // Bug fix
 }
 
 .oobar-new-design{
@@ -12,18 +12,21 @@
     .logo-header{
         position: relative;
         width: 100%;
-        background-color: #FFF;
+        // background-color: #FFF;
+        background-color: $new-theme-black;
         padding: 1em 0;
     }
 
     .header-container{
-        background-color: #eeeeee;
+        // background-color: #eeeeee;
+        background-color: $new-theme-black-light;
     }
     
     .home{
         
         padding: 3em 0;
-        background-color: #FFF;
+        // background-color: #FFF;
+        background-color: $new-theme-black;
 
         &__carousel{
             margin-top: -3em;
@@ -34,12 +37,15 @@
         }
     
         .about{
+            color: $color-white;
+
             &__title{
                 padding-bottom: 5px;
             }
         }
 
         .events{
+            color: $color-white;
             margin: 2em 0;
             
             &__title{

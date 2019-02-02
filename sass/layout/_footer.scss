@@ -1,15 +1,17 @@
 .footer{
+    color: $color-white;
 
     padding: 40px 0;
 
-        background-image: url('/img/footer_image.png');
+        // background-image: url('/img/footer_image.png');
+        background: $new-theme-black-light;
         border-top: 1px solid #D9D9D9;
         box-shadow: 0px -2px 4px rgba(0,0,0,0.1);
     
         &-widget{
     
             &__title{
-                color: #333333;
+                // color: #333333;
                 font-size: 14px;
                 font-family: Arial, Arial, Helvetica, sans-serif;
                 font-weight: normal;
@@ -20,7 +22,7 @@
             &__content{
                 line-height: 1.6em;
                 font-size: 13px;
-                color: #494949;
+                // color: #494949;
             }
         }
 }

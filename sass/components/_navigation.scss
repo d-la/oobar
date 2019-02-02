@@ -3,6 +3,7 @@
     .navbar-toggler-icon{
         i{
             padding-top: 5px;
+            color: #FFF;
 
             &:hover{
                 color: $theme-color-gold;
@@ -16,7 +17,8 @@
             border-left: 1px solid #E6E6E6; 
 
             .nav-link{
-                color: #000;
+                // color: #000;
+                color: #FFF;
                 font-size: 14px;
                 padding: 28px 14px 16px 14px;
                 border-top: 1px solid transparent;
