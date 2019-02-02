@@ -45,7 +45,8 @@ $activeNav = ' nav-link--active';
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <a href="">
-                        <img src="/img/oobar_logo_small.jpg" alt="Oobar and lounge logo" height="120">
+                        <!-- <img src="/img/oobar_logo_small.jpg" alt="Oobar and lounge logo" height="120"> -->
+                        <img src="/img/oobar_logo_transparent_all_gold_1.png" alt="Oobar and lounge logo" height="120">
                     </a>
                 </div>  
             </div>
