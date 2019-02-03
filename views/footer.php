@@ -5,18 +5,19 @@
                 <div class="col-xs-12 col-md-4 col-lg-4">
                     <div class="footer-widget">
                         <h3 class="footer-widget__title">
-                            hotel information
+                            Oobar Lounge Information
                         </h3>
                         <p class="footer-widget__content">
-                            <strong>Check-In: 3PM</strong>
+                            <strong>SUNDAY THROUGH WEDNESDAY</strong>
                             <br />
-                            <strong>Check-Out: 12PM</strong>
+                            <strong>5PM - 12AM</strong>
                             <br />
-                            Non-Smoking
+                            THURSDAY THROUGH SATURDAY
                             <br />
-                            Street Parking
+                            5PM - 330AM
                             <br />
-                            Pets not allowed!
+                            <br />
+                            PLEASE NOTE THAT OPERATING HOURS CAN VARY DEPENDING ON EVENTS AND PRIVATE BOOKINGS
                         </p>
                     
                     </div>
