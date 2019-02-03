@@ -1,0 +1,23 @@
+.packages{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-weight: 600;
+    padding: 0 1.5em;
+    margin: 4em 0;
+
+    &__title{
+        display: inline-block;
+        font-size: 1.25em;
+        border-bottom: 1px solid $theme-color-gold;
+        text-transform: inherit;
+    }
+
+    &__item{
+        font-size: 1.15em;
+        text-transform: inherit;
+        color: $color-black;
+    }
+}
