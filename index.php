@@ -50,6 +50,10 @@ switch ($request) {
     case '/event-details/' . $eventDetailsId:
         require __DIR__ . '/views/event-details.php';
         break;
+    case '/menu':
+    case '/menu/':
+        require __DIR__ . '/views/menu.php';
+        break;
 
     
     // Back end routes
