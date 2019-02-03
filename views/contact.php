@@ -76,6 +76,7 @@ $activeNav = ' nav-link--active';
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="contact__title">Contact Us</h1>
+                        <p>BOTTLE RESERVATIONS AND BOOKING <br /> <a href="tel:6469256679">(646) 925-6679</a> </p>
                     </div>
                     <div class="col-md-6">
                         <h4>Oo Bar & Lounge</h4>
