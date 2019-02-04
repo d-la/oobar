@@ -20,10 +20,10 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <meta property="og:title" content="<?= $eventName ?>" />
+    <meta property="og:title" content="Oobar and Lounge menu page" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://oobarloungeny.com/event-details/<?= $eventId ?>" />
-    <meta property="og:image" content="http://oobarloungeny.com<?= $bannerPath ?>" />
+    <meta property="og:url" content="http://oobarloungeny.com/menu" />
+    <meta property="og:image" content="http://oobarloungeny.com/img/oobar_logo_transparent_all_gold_1.png" />
 
     <link rel="shortcut icon" type="image/png" href="/img/the_one_favicon1.png"/>
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
