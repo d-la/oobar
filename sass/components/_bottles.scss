@@ -19,4 +19,12 @@
         text-transform: inherit;
         color: $color-black;
     }
+
+    &__name{
+        float: left;
+    }
+
+    &__price{
+        float: right;
+    }
 }

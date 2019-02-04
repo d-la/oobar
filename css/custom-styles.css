@@ -514,6 +514,12 @@ p {
   text-transform: inherit;
   color: #000;
 }
+.bottles__name {
+  float: left;
+}
+.bottles__price {
+  float: right;
+}
 
 @supports (display: flex) {
   .flex {
@@ -759,7 +765,14 @@ p {
   display: block;
   max-width: 60em;
   width: 100%;
-  margin: 4em auto;
+  margin: 0 auto;
+}
+.menu-page {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: #121212;
+  padding: 4em 0;
 }
 .menu__header {
   display: block;
@@ -799,14 +812,24 @@ p {
   font-size: 1.1em;
   text-transform: uppercase;
   font-weight: inherit;
+  margin: 0;
 }
 .menu__footer-desc {
   font-size: 1em;
   font-weight: inherit;
 }
 
+@media (max-width: 768px) {
+  .menu {
+    max-width: 55em;
+  }
+}
 @media (max-width: 767px) {
-  .menu__container .flex--row {
+  .menu {
+    padding: 2em;
+    max-width: 100%;
+  }
+  .menu__container.flex--row {
     flex-direction: column;
   }
 }

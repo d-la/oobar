@@ -3,7 +3,15 @@
     display: block;
     max-width: 60em;
     width: 100%;
-    margin: 4em auto;
+    margin: 0 auto;
+
+    &-page{
+        position: relative;
+        display: block;
+        width: 100%;
+        background: $new-theme-black;
+        padding: 4em 0;
+    }
 
     &__header{
         display: block;
@@ -37,11 +45,7 @@
         border-bottom: 1px solid $theme-color-gold;
         text-transform: uppercase;
     }
-
-    &__container{
-        // margin: 3em 1.5em 1.5em;
-    }
-
+    
     &__footer{
         background: #FFF;
         text-align: center;
@@ -53,6 +57,7 @@
             font-size: 1.1em;
             text-transform: uppercase;
             font-weight: inherit;
+            margin: 0;
         }
 
         &-desc{
@@ -62,10 +67,18 @@
     }
 }
 
+@media (max-width: 768px){
+    .menu{
+        max-width: 55em;
+    }
+}
+
 @media (max-width: 767px){
     .menu{
+        padding: 2em;
+        max-width: 100%;
         
-        &__container .flex--row{
+        &__container.flex--row{
             flex-direction: column;
         }
     }
