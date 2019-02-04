@@ -70,6 +70,7 @@ $activeNav = ' nav-link--active';
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#about" data-click="scroll-to-target">ABOUT <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="#events" data-click="scroll-to-target">EVENTS <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="/gallery" data-click="scroll-to-target">GALLERY <span>&nbsp;</span></a></li>
+                        <li class="nav-item"><a class="nav-link hover-theme-color" href="/menu" data-click="scroll-to-target">MENU <span>&nbsp;</span></a></li>
                         <li class="nav-item"><a class="nav-link hover-theme-color" href="/contact" data-click="scroll-to-target">CONTACT <span>&nbsp;</span></a></li>
                     </ul>
                 </div>
