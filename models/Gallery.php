@@ -197,6 +197,43 @@ class Gallery{
         }
     }
 
+    // function compareGalleryImageHeights($image1, $image2){
+    //     if ($image1['height'] == $image2['height']){
+    //         return 0;
+    //     }
+
+    //     return ($image1['height'] > $image2['height']) ? 1 : -1;
+    // }
+
+    public function selectGalleryImagesWithDimensions(){
+
+        $sqlQuery = 'SELECT id, name, description, path FROM gallery_images;';
+
+        $resultSet = 0;
+        $returnedObject = $this->mysqli->query($sqlQuery);
+        error_log($this->mysqli->error);
+        if ($returnedObject->num_rows > 0){
+            $resultSet = $returnedObject->fetch_all(MYSQLI_ASSOC);   
+        }
+
+        // Loop through the database results and assign each galleryImage a height and width taken from getimagesize
+        for ($i = 0; $i < count($resultSet); $i++){
+
+            $imageData = getimagesize($_SERVER['DOCUMENT_ROOT'] . $resultSet[$i]['path']);
+            $resultSet[$i]['height'] = $imageData[1];
+            $resultSet[$i]['width'] = $imageData[0];
+        }
+
+        // Sort the array based on the height of each image
+        usort($resultSet, function($image1, $image2){
+            if ($image1['height'] == $image2['height']){
+                return 0;
+            }
+    
+            return ($image1['height'] > $image2['height']) ? 1 : -1;
+        });
+        return $resultSet;
+    }
 }
 
 

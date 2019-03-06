@@ -83,8 +83,13 @@ $activeNav = ' nav-link--active';
                     
                         <?php
                         $gallery = new Gallery();
-                        $allImages = $gallery->selectAllGalleryImages();
+                        // $allImages = $gallery->selectAllGalleryImages();
+                        $allImages = $gallery->selectGalleryImagesWithDimensions();
                         $totalImageCount = count($allImages);
+
+                        echo '<pre style="color:white">';
+                        var_dump($allImages);
+                        echo '</pre>';
 
                         if ($totalImageCount == 0){
                         ?>
