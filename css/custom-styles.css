@@ -446,6 +446,10 @@ p {
   max-width: 53.846em;
   width: 100%;
 }
+.open-image__container--long-image {
+  margin: 2.5% auto;
+  max-width: 40em !important;
+}
 .open-image__close-container {
   position: absolute;
   top: -1em;

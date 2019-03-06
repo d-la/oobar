@@ -44,6 +44,11 @@
             max-width: 53.846em;
             width: 100%;
         }
+        
+        &--long-image{
+            margin: 2.5% auto;
+            max-width: 40em !important;
+        }
     }
 
     &__close-container{
