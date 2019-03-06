@@ -106,7 +106,7 @@ $activeNav = ' nav-link--active';
                                     <!-- begin work -->
                                     <div class="work"> 
                                         <div class="image">
-                                            <img class="lazy" src="/img/blurred_image.jpg" data-src="<?= $image['path'] ?>" alt="<?= $image['name'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" />
+                                            <img class="lazy" src="/img/blurred_image.jpg" data-src="<?= $image['path'] ?>" alt="<?= $image['name'] ?>" data-click="show-gallery-image" data-position="<?= $count; ?>" data-height="<?= $image['height'] ?>" />
                                         </div>
                                         <div class="desc">
                                             <span class="desc-title"><?= $image['name']; ?></span>
