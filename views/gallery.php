@@ -86,11 +86,7 @@ $activeNav = ' nav-link--active';
                         // $allImages = $gallery->selectAllGalleryImages();
                         $allImages = $gallery->selectGalleryImagesWithDimensions();
                         $totalImageCount = count($allImages);
-
-                        echo '<pre style="color:white">';
-                        var_dump($allImages);
-                        echo '</pre>';
-
+                        
                         if ($totalImageCount == 0){
                         ?>
                         <p class="content-desc text-center">
