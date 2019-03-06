@@ -121,6 +121,18 @@ let galleryImageModal = function(){
         imageData.imagePath = $(requestedImageElement).attr('src');
         imageData.altText = $(requestedImageElement).attr('alt');
         imageData.position = $(requestedImageElement).data('position');
+        imageData.height = $(requestedImageElement).data('height');
+
+        const openImageContainer = $('.open-image__container');
+        if (imageData.height > 1619){
+            if (!$(openImageContainer).hasClass('open-image__container--long-image')){
+                $(openImageContainer).addClass('open-image__container--long-image');
+            }
+        } else {
+            if ($(openImageContainer).hasClass('open-image__container--long-image')){
+                $(openImageContainer).removeClass('open-image__container--long-image');
+            }
+        }
 
         // Assign the data to the image element in the modal
         $(imageElementInModal).attr({
