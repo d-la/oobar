@@ -31,30 +31,6 @@ switch ($request) {
     case '/index.php':
         require __DIR__ . '/views/index.php';
         break;
-    case '/gallery':
-    case '/gallery/':
-    case '/gallery.php':
-        require __DIR__ . '/views/gallery.php';
-        break;
-    case '/login':
-    case '/login/':
-    case '/login.php':
-        require __DIR__ . '/views/login.php';
-        break;
-    case '/contact':
-    case '/contact/':
-    case '/contact.php':
-        require __DIR__ .'/views/contact.php';
-        break;
-    case ($eventDetailsId > -1):
-    case '/event-details/' . $eventDetailsId:
-        require __DIR__ . '/views/event-details.php';
-        break;
-    case '/menu':
-    case '/menu/':
-        require __DIR__ . '/views/menu.php';
-        break;
-
     
     // Back end routes
     case '/admin/dashboard':
